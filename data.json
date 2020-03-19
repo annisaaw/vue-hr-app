@@ -1,0 +1,290 @@
+{
+	"users": [
+		{
+		  "id": 11
+		  "username": "admin",
+		  "password": "admin",
+		  "role" : "admin"
+		},
+		{
+		  "id": 12
+		  "username": "employee",
+		  "password": "employee",
+		  "role" : "employee"
+		},
+		{
+		  "id": 13
+		  "username": "applicant",
+		  "password": "applicant",
+		  "role" : "applicant"
+		}
+	],
+	"event" : [
+		{
+			"id" : 31,
+			"date" : "25 Maret",
+			"desc" : "Nyepi"
+		},
+		{
+			"id" : 32,
+			"date" : "21 April",
+			"desc" : "Kartini"
+		},
+		{
+			"id" : 33,
+			"date" : "17 Agustus",
+			"desc" : "Dirgahayu Indonesia"
+		}
+	]
+	"employee" : [
+		{
+			"id" : 21,
+			"name" : "john doe",
+			"email" : "john.doe@mail.com",
+			"gender" : "male",
+			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
+			"birthdate" : "02/12/1990",
+			"birthplace" : "Jakarta",
+			"phone" : "081234567",
+			"job_id" : 81,
+			"position" : "Manager",
+			"Division" : "Research and Development",
+			"status_id" : 43,
+			"status" : "Probation"
+		},
+		{
+			"id" : 22,
+			"name" : "jane doe",
+			"email" : "jane.doe@mail.com",
+			"gender" : "female",
+			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user3-128x128.jpg",
+			"birthdate" : "01/01/1995",
+			"birthplace" : "Bandung"
+			"phone" : "081234789",
+			"job_id" : 82,
+			"position" : "Devops",
+			"Division" : "Engineering",
+			"status_id" : 43,
+			"status" : "Probation"
+		},
+		{
+			"id" : 23,
+			"name" : "Medina",
+			"email" : "medina@mail.com",
+			"gender" : "female",
+			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user4-128x128.jpg",
+			"birthdate" : "09/16/1994",
+			"birthplace" : "Bogor",
+			"phone" : "081456567",
+			"job_id" : 83,
+			"position" : "Frontend Developer",
+			"Division" : "Engineering",
+			"status_id" : 42,
+			"status" : "Contract"
+		},
+		{
+			"id" : 24,
+			"name" : "Bryan",
+			"email" : "bryan@mail.com",
+			"gender" : "male",,
+			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
+			"birthdate" : "10/13/1998",
+			"birthplace" : "Jogja",
+			"phone" : "081789567",
+			"job_id" : 81,
+			"position" : "Manager",
+			"Division" : "Research and Development",
+			"status_id" : 41,
+			"status" : "Permanent"
+		}	
+	],
+	"employee_status" : [
+		{
+			"id" : 41,
+			"status" : "Permanent"
+		},
+		{
+			"id" : 42,
+			"status" : "Contract"
+		},
+		{
+			"id" : 43,
+			"status" : "Probation"
+		}
+	],
+	"applicant" : [
+		{
+			"id" : 71,
+			"name" : "Henry",
+			"email" : "henry@mail.com",
+			"gender" : "male",,
+			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
+			"birthdate" : "02/12/1990",
+			"birthplace" : "Jakarta",
+			"phone" : "081234567",
+			"status_id" : 51,
+			"status" : "Unprocessed",
+			"job_id" : 81,
+			"position" : "Manager",
+			"Division" : "Research and Development"
+		},
+		{
+			"id" : 72,
+			"name" : "Barry",
+			"email" : "barry@mail.com",
+			"gender" : "female",,
+			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
+			"birthdate" : "01/01/1995",
+			"birthplace" : "Jakarta",
+			"status_id" : 52,
+			"status" : "Scheduled to Psycho Test",
+			"job_id" : 81,
+			"position" : "Manager",
+			"Division" : "Research and Development"
+		},
+		{
+			"id" : 73,
+			"name" : "Lady Gaga",
+			"email" : "lady.gaga@mail.com",
+			"gender" : "female",,
+			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
+			"birthdate" : "02/12/1990",
+			"birthplace" : "Jakarta",
+			"status_id" : 53,
+			"status" : "Scheduled to Interview",
+			"job_id" : 81,
+			"position" : "Manager",
+			"Division" : "Research and Development"
+		}		
+	],
+	"applicant_status" : [
+		{
+			"id" : 51,
+			"status" : "Unprocessed"
+		},
+		{
+			"id" : 52,
+			"status" : "Scheduled to Psycho Test"
+		},
+		{
+			"id" : 53,
+			"status" : "Scheduled to Interview"
+		}
+	],
+	"leave_status" : [
+		{
+			"id" : 61,
+			"status" : "Approved"
+		},
+		{
+			"id" : 62,
+			"status" : "Pending"
+		},
+		{
+			"id" : 63,
+			"status" : "Reject"
+		}
+	],
+	"leave_request" : [
+		{
+			"id" : 91,
+			"status_id" : 61,
+			"status" : "Approved",
+			"employee_id" : 21,
+			"name" : "jane doe",
+			"email" : "jane.doe@mail.com",
+			"job_id" : 81,
+			"position" : "Manager",
+			"Division" : "Research and Development",
+			"leave_at" : "19 Maret 2020"
+		},
+		{
+			"id" : 92,
+			"status_id" : 62,
+			"status" : "Pending",
+			"employee_id" : 22,
+			"name" : "john doe",
+			"email" : "john.doe@mail.com",
+			"job_id" : 82,
+			"position" : "Devops",
+			"Division" : "Engineering"
+			"leave_at" : "19 Maret 2020"
+		}
+	],
+	"job" : [
+		{
+			"id" : 81,
+			"position" : "Manager",
+			"Division" : "Research and Development"
+		},
+		{
+			"id" : 82,
+			"position" : "Devops",
+			"Division" : "Engineering"
+		},
+		{
+			"id" : 83,
+			"position" : "Frontend Developer",
+			"Division" : "Engineering"
+		}
+	]
+	"attendance" : {
+		{
+			"id" : 1,
+			"date" : "2 Maret 2020",
+			"data" : [
+				{
+					"employee_id" : 21,
+					"name" : "john doe",
+					"in" : "08:00:00",
+					"out" : "17:00:00",
+				},
+				{
+					"employee_id" : 22,
+					"name" : "jane doe",
+					"in" : "08:00:00",
+					"out" : "17:00:00",
+				}
+			]
+			
+		},
+		{
+			"id" : 2,
+			"date" : "3 Maret 2020",
+			"data" : [
+				{
+					"employee_id" : 21,
+					"name" : "john doe",
+					"in" : "08:00:00",
+					"out" : "17:00:00",
+				},
+				{
+					"employee_id" : 22,
+					"name" : "jane doe",
+					"in" : "08:00:00",
+					"out" : "17:00:00",
+				}
+			]
+			
+		},
+		{
+			"id" : 3,
+			"date" : "4 Maret 2020",
+			"data" : [
+				{
+					"employee_id" : 21,
+					"name" : "john doe",
+					"in" : "08:00:00",
+					"out" : "17:00:00",
+				},
+				{
+					"employee_id" : 22,
+					"name" : "jane doe",
+					"in" : "08:00:00",
+					"out" : "17:00:00",
+				}
+			]
+			
+		}
+	}
+}
