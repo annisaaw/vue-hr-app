@@ -11,25 +11,14 @@
 
 		<!-- <div v-for="item in navPage"> -->
 		<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-white">
-			<a href="#" class="btn btn-active btn-link mx-1">
-				<span>Dashboard</span>
-			</a>
-			<a href="#" class="btn btn-active btn-link mx-1">
-				<span>Employees</span>
-			</a>
-			<a href="#" class="btn btn-active btn-link mx-1">
-				<span>Attendance</span>
-			</a>
-			<a href="#" class="btn btn-active btn-link mx-1">
-				<span>Applicants</span>
-			</a>
-			<a href="#" class="btn btn-active btn-link mx-1">
-				<span>Leave Request</span>
-				<span class="p-1 bg-yellow-500 text-black rounded-sm ml-1 text-xs">2</span>
-			</a>
-			<a href="#" class="btn btn-active btn-link mx-1">
-				<span>Broadcast</span>
-			</a>
+			<router-link to="/" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded" exact><a>Dashboard</a></router-link> 
+			<router-link to="/employees" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded"><a>Employees</a></router-link> 
+			<router-link to="/attendance" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded"><a>Attendance</a></router-link> 
+			<router-link to="/applicants" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded"><a>Applicants</a></router-link> 
+			<router-link to="/leave-requests" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded">
+				<a>Leave Request<span class="p-1 bg-yellow-500 text-black rounded-sm ml-1 text-xs">2</span></a>
+			</router-link> 
+			<router-link to="/broadcast-message" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded"><a>Broadcast</a></router-link> 
 		</div>
 		<div class="flex items-center text-white">
 			<font-awesome-icon class="mr-2" :icon="['far', 'bell']" />
