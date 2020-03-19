@@ -1,8 +1,117 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './tailwind.css'
+import router from './router.js'
+import store from 'vuex'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+import { 
+  faFacebook,
+  faFacebookF,
+  faInstagram,
+  faLine,
+  faTwitter,
+  faWhatsapp,
+  faYoutubeSquare
+} from '@fortawesome/free-brands-svg-icons'
+
+import { 
+  faBell,
+  faCalendarAlt,
+  faClock,
+  faClone,
+  faEnvelope,
+  faHourglass,
+  faNewspaper
+} from '@fortawesome/free-regular-svg-icons'
+
+import { 
+  faAngleLeft,
+  faAngleDown,
+  faAngleRight,
+  faArrowRight,
+  faBars,
+  faBriefcase,
+  faCog,
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight,
+  faChevronUp,
+  faFont,
+  faHome,
+  faImages,
+  faLink,
+  faMapMarkerAlt,
+  faPlay,
+  faPhone,
+  faReply,
+  faSearch,
+  faShoppingCart,
+  faSignInAlt,
+  faStoreAlt,
+  faSpinner,
+  faTag,
+  faTags,
+  faTimes,
+  faUserCircle,
+  faUserSecret
+} from '@fortawesome/free-solid-svg-icons'
+
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(
+  faAngleDown,
+  faAngleLeft,
+  faAngleRight,
+  faArrowRight,
+  faBars, 
+  faBell,
+  faBriefcase,
+  faCalendarAlt,
+  faChevronDown, 
+  faChevronLeft,
+  faChevronRight, 
+  faChevronUp,
+  faClock, 
+  faClone,
+  faCog,
+  faEnvelope, 
+  faFacebook,
+  faFacebookF,
+  faFont,
+  faHome,
+  faHourglass,
+  faImages,
+  faInstagram,
+  faLine,
+  faLink,
+  faMapMarkerAlt,
+  faNewspaper,
+  faPlay,
+  faPhone, 
+  faReply,
+  faSearch, 
+  faShoppingCart, 
+  faSignInAlt, 
+  faStoreAlt,
+  faSpinner,
+  faTag,
+  faTags,
+  faTimes,
+  faTwitter,
+  faUserCircle, 
+  faUserSecret,
+  faWhatsapp,
+  faYoutubeSquare
+)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
+  router,
+  store,
+  render: h => h(App)
 }).$mount('#app')
