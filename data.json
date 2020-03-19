@@ -59,7 +59,7 @@
 			"gender" : "female",
 			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user3-128x128.jpg",
 			"birthdate" : "01/01/1995",
-			"birthplace" : "Bandung"
+			"birthplace" : "Bandung",
 			"phone" : "081234789",
 			"job_id" : 82,
 			"position" : "Devops",
@@ -86,7 +86,7 @@
 			"id" : 24,
 			"name" : "Bryan",
 			"email" : "bryan@mail.com",
-			"gender" : "male",,
+			"gender" : "male",
 			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
 			"birthdate" : "10/13/1998",
 			"birthplace" : "Jogja",
@@ -117,7 +117,7 @@
 			"id" : 71,
 			"name" : "Henry",
 			"email" : "henry@mail.com",
-			"gender" : "male",,
+			"gender" : "male",
 			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
 			"birthdate" : "02/12/1990",
 			"birthplace" : "Jakarta",
@@ -146,7 +146,7 @@
 			"id" : 73,
 			"name" : "Lady Gaga",
 			"email" : "lady.gaga@mail.com",
-			"gender" : "female",,
+			"gender" : "female",
 			"image" : "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
 			"birthdate" : "02/12/1990",
 			"birthplace" : "Jakarta",
@@ -246,7 +246,6 @@
 					"out" : "17:00:00",
 				}
 			]
-			
 		},
 		{
 			"id" : 2,
@@ -265,7 +264,6 @@
 					"out" : "17:00:00",
 				}
 			]
-			
 		},
 		{
 			"id" : 3,
@@ -284,7 +282,6 @@
 					"out" : "17:00:00",
 				}
 			]
-			
 		}
 	}
 }
