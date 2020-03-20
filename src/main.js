@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './tailwind.css'
-import router from './router.js'
-import store from 'vuex'
+import router from './router'
+import store from './store/store.js'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 

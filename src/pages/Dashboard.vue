@@ -34,7 +34,7 @@
       </div>
       <div class="flex">
         <app-card-medium>
-          <template v-slot:titleCard>HAHAH</template>
+          <template v-slot:titleCard>Upcoming Events</template>
           <template v-slot:contentCard>
             <div class="p-4">
               <table class="table-auto w-full bg-white border text-sm">
@@ -54,7 +54,7 @@
           </template>
         </app-card-medium>
         <app-card-medium>
-          <template v-slot:titleCard>HAHAH</template>
+          <template v-slot:titleCard>New Applicants</template>
           <template v-slot:contentCard>
             <div class="p-4">
               <table class="table-auto w-full bg-white border text-sm">

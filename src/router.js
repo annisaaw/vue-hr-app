@@ -10,32 +10,35 @@ const router = new Router({
       {
         path: '',
         name: 'dashboard',
-        component: () => import(/* webpackChunkName: "dashboard" */ './pages/Dashboard.vue')
+        component: () => import('./pages/Dashboard.vue')
       },
       {
         path: '/employees',
         name: 'employees',
-        component: () => import(/* webpackChunkName: "dashboard" */ './pages/Employees.vue')
+        component: () => import('./pages/Employees.vue'),
+        children: [
+          { path: 'add', component: () => import('./pages/EmployeeAdd'), name: 'EmployeeAdd' }
+        ]
       },
       {
         path: '/attendance',
         name: 'attendance',
-        component: () => import(/* webpackChunkName: "dashboard" */ './pages/Attendance.vue')
+        component: () => import('./pages/Attendance.vue')
       },
       {
         path: '/applicants',
         name: 'applicants',
-        component: () => import(/* webpackChunkName: "dashboard" */ './pages/Applicants.vue')
+        component: () => import('./pages/Applicants.vue')
       },
       {
         path: '/leave-requests',
         name: 'leave-requests',
-        component: () => import(/* webpackChunkName: "dashboard" */ './pages/Leave.vue')
+        component: () => import('./pages/Leave.vue')
       },
       {
         path: '/broadcast-message',
         name: 'broadcast-message',
-        component: () => import(/* webpackChunkName: "dashboard" */ './pages/Broadcast.vue')
+        component: () => import('./pages/Broadcast.vue')
       }
     //   {
     //     path: '/login',
@@ -45,7 +48,7 @@ const router = new Router({
     //         auth
     //       ]
     //     },
-    //     component: () => import(/* webpackChunkName: "login" */ '../pages/Login.vue')
+    //     component: () => import('../pages/Login.vue')
     //   }
     ]
   })
