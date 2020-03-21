@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router'
+import Employee from './pages/employee/Employees'
+import EmployeeBase from './pages/employee/EmployeeBase'
+import EmployeeAdd from './pages/employee/EmployeeAdd'
 
 Vue.use(Router);
 
@@ -14,10 +17,10 @@ const router = new Router({
       },
       {
         path: '/employees',
-        name: 'employees',
-        component: () => import('./pages/Employees.vue'),
-        children: [
-          { path: 'add', component: () => import('./pages/EmployeeAdd'), name: 'EmployeeAdd' }
+        component: Employee,
+        children: [ 
+          { path: '', component: EmployeeBase, name: 'employees' },
+          { path: 'add', component: EmployeeAdd, name: 'add'}
         ]
       },
       {

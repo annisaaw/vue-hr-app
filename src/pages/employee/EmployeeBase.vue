@@ -3,12 +3,12 @@
     <div class="container max-w-5xl mx-auto">
       <app-nav></app-nav>
       <div class="flex m-5 justify-between items-center">
-				<h1 class="text-3xl text-white">Employee List</h1>
-				<div>
-					<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Export to CSV</a>
-					<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Export to CSV (All)</a>
-					<router-link :to="{name: 'EmployeeAdd'}" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Add New Employee</router-link>
-				</div>
+			<h1 class="text-3xl text-white">Employee List</h1>
+			<div>
+				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Export to CSV</a>
+				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Export to CSV (All)</a>
+				<router-link :to="{ name: 'add'}" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Add New Employee</router-link>
+			</div>
       </div>
 			
       <div class="flex flex-col items-center">
@@ -68,9 +68,9 @@
 </template>
 
 <script>
-import Nav from '../components/Navigasi'
-import Background from '../components/Background'
-import LargeCard from '../components/LargeCard'
+import Nav from '../../components/Navigasi'
+import Background from '../../components/Background'
+import LargeCard from '../../components/LargeCard'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
