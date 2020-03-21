@@ -13,6 +13,12 @@ const actions = {
     async fetchStatus({ commit }) {
         let res = await axios.get('http://localhost:3000/employee_status');
         commit('STATUS', res.data)
+    },
+    async getNewEmployee() {
+        // const config = { headers: { 'content-type': 'multipart/form-data' }}
+        await axios.post('http://localhost:8080/employees/add', {name: 'Alex', surname: 'Moran', email: 'alexmoran@bms.edu'}, {headers: {'Accept': 'application/json'}})
+        .then(response => console.log(response))
+        .catch(errors => console.log(errors))
     }
 }
 

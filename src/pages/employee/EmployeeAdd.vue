@@ -31,15 +31,15 @@
 											<div class="w-2/3">
 												<div class="w-full mb-3">
 													<p class="mb-2 text-gray-600">Name</p>
-													<input type="text" name="name" placeholder="" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+													<input type="text" name="name" placeholder="" required="required" id="newName" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 												</div>
 												<div class="w-full mb-3">
 													<p class="mb-2 text-gray-600">Email</p>
-													<input type="email" name="email" placeholder="" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+													<input type="email" name="email" placeholder="" required="required" id="newEmail" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 												</div>
 												<div class="w-full mb-3">
 													<p class="mb-2 text-gray-600">Phone Number</p>
-													<input type="number" name="phone-number" placeholder="(021) - XXX" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+													<input type="number" name="phone-number" placeholder="(021) - XXX" required="required" id="newPhoneNumber" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 												</div>
 												<div class="w-full mb-3">
 													<p class="mb-2 text-gray-600">Gender</p>
@@ -48,24 +48,24 @@
 														<span class="ml-2">Male</span>
 													</label>
 													<label for="gender" class="mx-3">
-														<input type="radio" name="gender" value="2">
+														<input type="radio" name="gender" value="2" checked>
 														<span class="ml-2">Female</span>
 													</label>
 												</div>
 												<div class="w-full mb-3">
 													<p class="mb-2 text-gray-600">Birth date</p>
-													<input type="date" name="birthdate" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+													<input type="date" name="birthdate" id="newBirthdate" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 												</div>
 												<div class="w-full mb-3">
 													<p class="mb-2 text-gray-600">Birth Place</p>
-													<input type="text" name="birthplace" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Bidan">
+													<input type="text" name="birthplace" id="newBirthplace" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Bidan">
 												</div>
 											</div>
 											<div class="w-1/3">
 												<div class="ml-10 mt-4">
 													<div class="">
-														<img src="https://images.unsplash.com/photo-1567270671170-fdc10a5bf831?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="" class="w-48 h-48 rounded-md">
-														<input type="file" src=""  alt="" class="mt-4">
+														<div class="bg-cover w-3/5 bg-center" style="height: 160px; width: 160px" :style="{ 'background-image': 'url(' + this.dataImg + ')' }"></div>
+														<input type="file" src=""  alt="" id="inputFile" class="mt-4">
 													</div>
 												</div>
 											</div>
@@ -86,10 +86,21 @@
 <script>
 import Background from '../../components/Background'
 import Nav from '../../components/Navigasi'
+import { mapActions } from 'vuex'
 export default {
 		components: {
 			AppBack: Background,
 			AppNav: Nav
+		},
+		data() {
+			return {
+				dataImg: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
+			}
+		},
+		computed: {
+			...mapActions({
+				sendNewEmployee: 'employee/getNewEmployee'
+			})
 		}
 }
 </script>
