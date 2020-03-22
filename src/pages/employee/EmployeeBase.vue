@@ -100,9 +100,8 @@ export default {
 			if (this.activeIndex === 1) stat = 'Contract'
 			if (this.activeIndex === 2) stat = 'Probation'
 			return this.name ? employee.filter(a => a.status === stat && a.name.toLowerCase().includes(this.name.toLowerCase())) : employee.filter(a => a.status === stat)
-		},
+	},
 		search() {
-			console.log(this.name);
 			return this.name
 		}
   },
