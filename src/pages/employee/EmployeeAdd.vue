@@ -198,7 +198,6 @@ export default {
 						sef.image = fileLoadedEvent.target.result;
 				};
 				fileReader.readAsDataURL(fileToLoad);
-				console.log(this.image)
 			}
 		},
 		computed: {
