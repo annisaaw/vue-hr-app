@@ -20,7 +20,8 @@ const router = new Router({
         component: Employee,
         children: [ 
           { path: '', component: EmployeeBase, name: 'employees' },
-          { path: 'add', component: EmployeeAdd, name: 'add'}
+          { path: 'add', component: EmployeeAdd, name: 'add'},
+          // { path: ':id/edit', component: EmployeeAdd, name: 'edit'}
         ]
       },
       {

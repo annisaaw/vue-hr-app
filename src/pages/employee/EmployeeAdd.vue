@@ -93,7 +93,7 @@
 											<div class="w-full mb-3">
 												<p class="mb-2 text-gray-600">Employee Status</p>
 												<div class="inline-block relative w-64">
-													<select class="block appearance-none w-64 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" v-model="status">
+													<select class="block appearance-none w-64 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" v-model="status_id">
 														<option v-for="(item, idx) in allStatus" :value="item.id" :key="idx">{{ item.status }}</option>
 													</select>
 													<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -143,8 +143,10 @@ export default {
 				birthplace: '',
 				phone: '',
 				job_id: 0,
-				
-				status: 0
+				status_id: 0,
+				position: '',
+				Division: '',
+				status:''
 			}
 		},
 		methods: {
@@ -156,6 +158,8 @@ export default {
 			}),
 			saveNew() {
 				const last_id = this.allEmployee[this.allEmployee.length-1].id;
+				let jobs = this.allJob;
+				let stat = this.allStatus;
 				let new_employee = {
 					id: parseInt(last_id + 1),
 					name: this.name,
@@ -166,15 +170,22 @@ export default {
 					birthplace: this.birthplace,
 					phone: this.phone,
 					job_id: parseInt(this.job_id),
-					status_id: parseInt(this.status)
-				}
-				if (this.name != '' && this.email != '' && this.image != '' && this.phone != '', this.job_id != '' && this.status_id != '' ) {
+					status_id: parseInt(this.status_id),
+					position: '',
+					Division: '',
+					status: ''
+				}	
+				console.log(this.gender)
+				if(this.name != '' && this.email != '' && this.birthdate != '' && this.job_id != '' && this.status_id != '') {
 					this.saveSuccess = true;
+					new_employee.position = jobs.filter(a => a.id === new_employee.job_id)[0].position
+					new_employee.Division = jobs.filter(a => a.id === new_employee.job_id)[0].Division
+					new_employee.status = stat.filter(a => a.id === new_employee.status_id)[0].status
 					this.addEmployee(new_employee)
 					this.$router.push({ name: 'employees'})
 				} else {
 					this.saveError = true;
-					console.log('ERROR')
+					console.log('Data input error!')
 				}
 				
 			},
