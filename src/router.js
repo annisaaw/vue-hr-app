@@ -4,6 +4,8 @@ import Employee from './pages/employee/Employees'
 import EmployeeBase from './pages/employee/EmployeeBase'
 import EmployeeAdd from './pages/employee/EmployeeAdd'
 import EmployeeEdit from './pages/employee/EmployeeEdit'
+import Applicants from './pages/applicant/Applicants'
+import ApplicantBase from './pages/applicant/ApplicantBase'
 
 Vue.use(Router);
 
@@ -32,8 +34,10 @@ const router = new Router({
       },
       {
         path: '/applicants',
-        name: 'applicants',
-        component: () => import('./pages/Applicants.vue')
+        component: Applicants,
+        children: [
+          { path: '', component: ApplicantBase, name: 'applicants' }
+        ]
       },
       {
         path: '/leave-requests',
