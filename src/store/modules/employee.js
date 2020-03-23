@@ -21,7 +21,11 @@ const actions = {
     },
     addEmployee({commit}, payload) {
         axios.post('http://localhost:3000/employee', payload)
-        commit('addEmployee')
+        commit('ADD_EMP')
+    },
+    editEmployee({state}, payload) {
+        axios.put('http://localhost:3000/employee/' + payload.id , payload)
+        console.log(state)
     }
 }
 
@@ -29,7 +33,7 @@ const mutations = {
     EMPLOYEE: (state, payload) => state.employee = payload,
     STATUS: (state, payload) => state.employeeStatus = payload,
     JOB: (state, payload) => state.job = payload,
-    addEmployee: (state, payload) => state.employee.push(payload)
+    ADD_EMP: (state, payload) => state.employee.push(payload)
 }
 
 const getters = {

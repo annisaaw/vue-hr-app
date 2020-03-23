@@ -2,13 +2,11 @@
 	<app-back>
 		<div class="container max-w-5xl mx-auto">
 			<app-nav class="mb-5"></app-nav>
-			<div>
-					<!-- START FORM -->
-				<form action="" method="post">
+				<form action="" method="edit">
 					<div class="flex justify-between">
-						<h1 class="text-white text-2xl">New Employee</h1>
+						<h1 class="text-white text-2xl">Edit Employee</h1>
 						<div class="items-center my-3">
-							<button class="btn btn-lg mr-4 px-6 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" @click.prevent="saveNew()">Save</button>
+							<button class="btn btn-lg mr-4 px-6 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" @click.prevent="saveEdited()">Save</button>
 							<router-link :to="{name: 'employees'}" class="btn btn-lg px-4 py-3 bg-blue-700 hover:bg-blue-500 text-white rounded-md router-link-active">Cancel</router-link>
 						</div>
 					</div>
@@ -108,9 +106,6 @@
 						</div>
 					</div>
 				</form>
-					<!-- END FORM -->
-
-			</div>
 		</div>
 	</app-back>
 </template>
@@ -120,102 +115,110 @@ import Background from '../../components/Background'
 import Nav from '../../components/Navigasi'
 import { mapGetters, mapActions } from 'vuex'
 export default {
-		components: {
-			AppBack: Background,
-			AppNav: Nav
+	components: {
+		AppBack: Background,
+		AppNav: Nav
+	},
+	data() {
+		return {
+			activeIndex: 0,
+			menu: [
+				{'name': 'Profile'},
+				{'name': 'Occupation'}
+			],
+			id: this.$route.params.id,
+			name: '',
+			email: '',
+			gender: '',
+			image: '',
+			birthdate: '02/12/1991',
+			birthplace: '',
+			phone: '',
+			job_id: 0,
+			status_id: 0,
+			position: '',
+			Division: '',
+			status:''
+		}
+	},
+	methods: {
+		...mapActions({
+			addEmployee: 'employee/addEmployee',
+			fetchEmployee: 'employee/fetchEmployee',
+			fetchStatus: 'employee/fetchStatus',
+			fetchJob: 'employee/fetchJob',
+			editEmployee: 'employee/editEmployee'
+		}),
+		editValue() {
+			if (!this.getValue) return
+			this.name = this.getValue.name
+			this.email = this.getValue.email
+			this.gender = this.getValue.gender
+			this.image = this.getValue.image
+			this.birthdate = this.getValue.birthdate
+			this.birthplace = this.getValue.birthplace
+			this.phone = this.getValue.phone
+			this.job_id = this.getValue.job_id
+			this.status_id = this.getValue.status_id
 		},
-		data() {
-			return {
-				activeIndex: 0,
-				menu: [
-					{'name': 'Profile'},
-					{'name': 'Occupation'}
-				],
-				imagePreview: false,
-				saveSuccess: false,
-				saveError: false,
-				name: '',
-				email: '',
-				gender: 'female',
-				image: '',
-				birthdate: '02/12/1991',
-				birthplace: '',
-				phone: '',
-				job_id: 0,
-				status_id: 0,
+		saveEdited() {
+			let jobs = this.allJob;
+			let stat = this.allStatus;
+			let new_employee = {
+				id: this.id,
+				name: this.name,
+				email: this.email,
+				gender: this.gender,
+				image: this.image,
+				birthdate: this.birthdate,
+				birthplace: this.birthplace,
+				phone: this.phone,
+				job_id: parseInt(this.job_id),
+				status_id: parseInt(this.status_id),
 				position: '',
 				Division: '',
-				status:''
+				status: ''
 			}
-		},
-		methods: {
-			...mapActions({
-				addEmployee: 'employee/addEmployee',
-				fetchEmployee: 'employee/fetchEmployee',
-				fetchStatus: 'employee/fetchStatus',
-				fetchJob: 'employee/fetchJob'
-			}),
-			saveNew() {
-				const last_id = this.allEmployee[this.allEmployee.length-1].id;
-				let jobs = this.allJob;
-				let stat = this.allStatus;
-				let new_employee = {
-					id: parseInt(last_id + 1),
-					name: this.name,
-					email: this.email,
-					gender: this.gender,
-					image: this.image,
-					birthdate: this.birthdate,
-					birthplace: this.birthplace,
-					phone: this.phone,
-					job_id: parseInt(this.job_id),
-					status_id: parseInt(this.status_id),
-					position: '',
-					Division: '',
-					status: ''
-				}	
-
-				if(this.name != '' && this.email != '' && this.birthdate != '' && this.job_id != '' && this.status_id != '') {
+			if(this.name != '' && this.email != '' && this.birthdate != '' && this.job_id != '' && this.status_id != '') {
 					this.saveSuccess = true;
 					new_employee.position = jobs.filter(a => a.id === new_employee.job_id)[0].position
 					new_employee.Division = jobs.filter(a => a.id === new_employee.job_id)[0].Division
 					new_employee.status = stat.filter(a => a.id === new_employee.status_id)[0].status
-					this.addEmployee(new_employee)
+					this.editEmployee(new_employee)
 					this.$router.push({ name: 'employees'})
 				} else {
 					this.saveError = true;
 					console.log('Data input error!')
 				}
-				
-			},
-			handleFileUpload(event) {
-				let filesSelected = event.target.files;
-				let fileToLoad = filesSelected[0];
-				let fileReader = new FileReader();
-				let sef = this;
-				fileReader.onload = function(fileLoadedEvent) 
-				{
-						sef.image = fileLoadedEvent.target.result;
-				};
-				fileReader.readAsDataURL(fileToLoad);
-				console.log(this.image)
-			}
 		},
-		computed: {
-			...mapGetters({
-				allEmployee: 'employee/listEmployee',
-				allJob: 'employee/listJob',
-				allStatus: 'employee/listEmployeeStatus'
-			})
-		},
-		async created() {
-			await this.fetchEmployee();
-			await this.fetchJob();
-			await this.fetchStatus();
+		handleFileUpload(event) {
+			let filesSelected = event.target.files;
+			let fileToLoad = filesSelected[0];
+			let fileReader = new FileReader();
+			let sef = this;
+			fileReader.onload = function(fileLoadedEvent) 
+			{
+					sef.image = fileLoadedEvent.target.result;
+			};
+			fileReader.readAsDataURL(fileToLoad);
+		}
+	},
+	computed: {
+		...mapGetters({
+			allEmployee: 'employee/listEmployee',
+			allJob: 'employee/listJob',
+			allStatus: 'employee/listEmployeeStatus'
+		}),
+		getValue(){
+			let emp = this.allEmployee;
+			return emp.find(a => a.id === parseInt(this.id))
+		}
+	},
+	async created() {
+		await this.fetchEmployee();
+		await this.fetchJob();
+		await this.fetchStatus();
+		await this.editValue();
   },
 }
 </script>
-
-<style scoped>
-
-</style>
