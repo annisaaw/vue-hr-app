@@ -5,9 +5,9 @@
       <div class="flex m-5 justify-between items-center">
 			<h1 class="text-3xl text-white">Employee List</h1>
 			<div>
-				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Export to CSV</a>
-				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Export to CSV (All)</a>
-				<router-link :to="{ name: 'add'}" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Add New Employee</router-link>
+				<a href="#" class="bg-green-400 hover:bg-green-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV</a>
+				<a href="#" class="bg-green-400 hover:bg-green-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV (All)</a>
+				<router-link :to="{ name: 'add'}" class="bg-green-400 hover:bg-green-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Add New Employee</router-link>
 			</div>
       </div>
 			
@@ -27,7 +27,7 @@
 									<td class="p-4" colspan="4">
 										<div class="flex">
 											<input type="text" class="m-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="" placeholder="Type to search" v-model="name">
-											<button class="m-1 bg-yellow-500 hover:bg-yellow-300 text-gray-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click="search()">Search</button>
+											<button class="m-1 bg-green-400 hover:bg-green-500 text-gray-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click="search()">Search</button>
 										</div>
 									</td>
 								</tr>

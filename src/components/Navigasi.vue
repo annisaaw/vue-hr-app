@@ -1,7 +1,7 @@
 <template>
-	<nav class="container max-w-5xl mx-auto flex items-center justify-between flex-wrap p-6 font-light text-sm border-white border-b-2 mx-2">
+	<nav class="container max-w-5xl mx-auto flex items-center justify-between flex-wrap pt-8 pb-4 font-light text-sm border-white border-b-2 mx-2">
 		<div class="flex items-center flex-shrink-0 text-white mr-6">
-			<span class="font-semibold text-xl tracking-tight">HR Portal</span>
+			<span class="font-semibold text-2xl tracking-tight">HR Portal</span>
 		</div>
 		<div class="block lg:hidden">
 			<button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -10,7 +10,7 @@
 		</div>
 
 		<!-- <div v-for="item in navPage"> -->
-		<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-white">
+		<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-white text-md">
 			<router-link to="/" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded" exact><a>Dashboard</a></router-link> 
 			<router-link to="/employees" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded"><a>Employees</a></router-link> 
 			<router-link to="/attendance" class="btn btn-active btn-link mx-1" tag="a" active-class="bg-transparent hover:bg-gray-700 text-white font-semibold hover:text-white py-1 px-2 border border-white hover:border-transparent rounded"><a>Attendance</a></router-link> 
