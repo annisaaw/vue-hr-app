@@ -5,9 +5,9 @@
       <div class="flex m-5 justify-between items-center">
 			<h1 class="text-3xl text-white">Applicant List</h1>
 			<div>
-				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Export CSV</a>
-				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Export CSV (All)</a>
-				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Add New Applicant</a>
+				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export CSV</a>
+				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export CSV (All)</a>
+				<router-link :to="{name: 'add_applicant'}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Add New Applicant</router-link>
 			</div>
       </div>
       <div class="flex flex-col items-center">
@@ -95,7 +95,6 @@ export default {
 			if (this.activeIndex === 0) stat = 'Unprocessed'
 			if (this.activeIndex === 1) stat = 'Scheduled to Psycho Test'
 			if (this.activeIndex === 2) stat = 'Scheduled to Interview'
-			// console.log(this.name, 'HAHA')
 			return this.name ? allApplicant.filter(a => a.status === stat && a.name.toLowerCase().includes(this.name.toLowerCase())) : allApplicant.filter(a => a.status === stat)
 		},
 		search() {

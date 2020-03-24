@@ -62,7 +62,7 @@
 										</div>
 										<div class="w-1/3">
 											<div class="ml-10 mt-4 ">
-												<div class="bg-cover w-3/5 bg-center" style="height: 160px; width: 160px" :style="{ 'background-image': 'url(' + (this.image) + ')' }"></div>
+												<div class="bg-cover w-3/5 bg-center" style="height: 160px; width: 160px" :style="{ 'background-image': 'url(' + (this.image ? this.image : 'https://api.adorable.io/avatars/285/abott@adorable.png') + ')' }"></div>
 												<input type="file" accept="image/*" ref="file" @change="handleFileUpload($event)" class="mt-4 w-40">
 											</div>
 										</div>

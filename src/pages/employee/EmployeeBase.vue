@@ -26,7 +26,7 @@
 								<tr>
 									<td class="p-4" colspan="4">
 										<div class="flex">
-											<input type="text" class="m-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="" placeholder="Type to search" v-model="name">
+											<input type="text" class="m-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Type to search" v-model="name">
 											<button class="m-1 bg-green-400 hover:bg-green-500 text-gray-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click="search()">Search</button>
 										</div>
 									</td>
