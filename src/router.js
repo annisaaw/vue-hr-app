@@ -7,6 +7,7 @@ import EmployeeEdit from './pages/employee/EmployeeEdit'
 import Applicants from './pages/applicant/Applicants'
 import ApplicantBase from './pages/applicant/ApplicantBase'
 import ApplicantAdd from './pages/applicant/ApplicantAdd'
+import ApplicantEdit from './pages/applicant/ApplicantEdit'
 
 Vue.use(Router);
 
@@ -38,7 +39,8 @@ const router = new Router({
         component: Applicants,
         children: [
           { path: '', component: ApplicantBase, name: 'applicants' },
-          { path: 'add', component: ApplicantAdd, name: 'add_applicant' }
+          { path: 'add', component: ApplicantAdd, name: 'add_applicant' },
+          { path: ':id/edit', component: ApplicantEdit, name: 'edit_applicant' }
         ]
       },
       {

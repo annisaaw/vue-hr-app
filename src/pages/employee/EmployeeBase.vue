@@ -7,7 +7,7 @@
 			<div>
 				<a href="#" class="bg-green-400 hover:bg-green-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV</a>
 				<a href="#" class="bg-green-400 hover:bg-green-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV (All)</a>
-				<router-link :to="{ name: 'add'}" class="bg-green-400 hover:bg-green-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Add New Employee</router-link>
+			<router-link :to="{ name: 'add'}" class="bg-green-400 hover:bg-green-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Add New Employee</router-link>
 			</div>
       </div>
 			

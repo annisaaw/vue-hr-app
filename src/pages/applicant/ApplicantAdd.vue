@@ -2,9 +2,9 @@
 	<app-back>
 		<div class="container max-w-5xl mx-auto">
 			<app-nav class="mb-5"></app-nav>
-			<form action="" method="post">
+			<form>
 				<div class="flex justify-between">
-					<h1 class="text-white text-2xl">New Applicant</h1>
+					<h1 class="text-white text-2xl">Edit Applicant</h1>
 					<div class="items-center my-3">
 						<button class="btn btn-lg mr-4 px-6 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" @click.prevent="saveNew()">Save</button>
 						<router-link :to="{name: 'applicants'}" class="btn btn-lg px-4 py-3 bg-blue-700 hover:bg-blue-500 text-white rounded-md router-link-active">Cancel</router-link>
@@ -209,7 +209,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped>
-
-</style>

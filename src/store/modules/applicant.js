@@ -17,7 +17,15 @@ const actions = {
 	async addApplicant({commit}, payload) {
 		let res = await axios.post('http://localhost:3000/applicant', payload)
 		commit('APP_ADDED', res.data)
-	}
+	},
+	editApplicant({state}, payload) {
+        axios.put('http://localhost:3000/applicant/' + payload.id , payload)
+        console.log(state)
+	},
+	removeApplicant({state}, payload) {
+        axios.delete('http://localhost:3000/applicant/' + payload)
+        console.log(state)
+    }
 }
 
 const mutations = {
