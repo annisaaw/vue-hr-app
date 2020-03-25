@@ -8,6 +8,9 @@ import Applicants from './pages/applicant/Applicants'
 import ApplicantBase from './pages/applicant/ApplicantBase'
 import ApplicantAdd from './pages/applicant/ApplicantAdd'
 import ApplicantEdit from './pages/applicant/ApplicantEdit'
+import LeaveRequest from './pages/leave_request/LeaveRequest.vue'
+import LeaveBase from './pages/leave_request/LeaveBase.vue'
+import LeaveAdd from './pages/leave_request/LeaveAdd.vue'
 
 Vue.use(Router);
 
@@ -45,8 +48,11 @@ const router = new Router({
       },
       {
         path: '/leave-requests',
-        name: 'leave-requests',
-        component: () => import('./pages/Leave.vue')
+        component: LeaveRequest,
+        children: [
+          { path: '', component: LeaveBase, name: 'leave-request' },
+          { path: 'add', component: LeaveAdd, name: 'add_leave_request' }
+        ]
       },
       {
         path: '/broadcast-message',
