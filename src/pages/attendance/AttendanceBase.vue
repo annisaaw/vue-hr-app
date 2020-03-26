@@ -1,11 +1,17 @@
 <template>
   <app-back>
-    <div class="container max-w-5xl mx-auto">
+    <div class="bg-black-alt font-sans leading-normal tracking-normal">
       <app-nav></app-nav>
 			<h1 class="text-3xl text-white ml-4 mt-4">Attendance</h1>
       <div class="flex justify-between items-center m-8">
 				<a href="#" class="bg-green-500 hover:bg-green-600 p-3 text-md text-white rounded mr-3">Clock In</a>
 				<a href="#" class="bg-red-500 hover:bg-red-600 text-white p-3 text-md rounded m-3">Clock Out</a>
+      <div class="px-8 container w-full mx-auto pt-20 flex mt-6 flex m-5 justify-between items-center">
+			<h1 class="text-3xl text-white">Attendance</h1>
+			<div>
+				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Clock In</a>
+				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Clock Out</a>
+			</div>
       </div>
       <div class="flex flex-col items-center">
         <app-table-card>
