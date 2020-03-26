@@ -8,9 +8,13 @@ import Applicants from './pages/applicant/Applicants'
 import ApplicantBase from './pages/applicant/ApplicantBase'
 import ApplicantAdd from './pages/applicant/ApplicantAdd'
 import ApplicantEdit from './pages/applicant/ApplicantEdit'
-import LeaveRequest from './pages/leave_request/LeaveRequest.vue'
-import LeaveBase from './pages/leave_request/LeaveBase.vue'
-import LeaveAdd from './pages/leave_request/LeaveAdd.vue'
+import LeaveRequest from './pages/leave_request/LeaveRequest'
+import LeaveBase from './pages/leave_request/LeaveBase'
+import LeaveAdd from './pages/leave_request/LeaveAdd'
+import Attendance from './pages/attendance/Attendance'
+import AttendanceBase from './pages/attendance/AttendanceBase'
+
+
 
 Vue.use(Router);
 
@@ -34,8 +38,10 @@ const router = new Router({
       },
       {
         path: '/attendance',
-        name: 'attendance',
-        component: () => import('./pages/Attendance.vue')
+        component: Attendance,
+        children: [
+          { path: '', component: AttendanceBase, name: 'attendance' }
+        ]
       },
       {
         path: '/applicants',
