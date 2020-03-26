@@ -2,10 +2,12 @@
   <app-back>
     <div class="bg-black-alt font-sans leading-normal tracking-normal">
       <app-nav></app-nav>
-			<h1 class="text-3xl text-white ml-4 mt-4">Attendance</h1>
-      <div class="flex justify-between items-center m-8">
-				<a href="#" class="bg-green-500 hover:bg-green-600 p-3 text-md text-white rounded mr-3">Clock In</a>
-				<a href="#" class="bg-red-500 hover:bg-red-600 text-white p-3 text-md rounded m-3">Clock Out</a>
+      <div class="px-8 container w-full mx-auto pt-20 flex mt-6 flex m-5 justify-between items-center">
+			<h1 class="text-3xl text-white">Attendance</h1>
+			<div>
+				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Clock In</a>
+				<a href="#" class="bg-yellow-500 hover:bg-yellow-900 text-gray-700 py-1 text-sm px-4 rounded m-1">Clock Out</a>
+			</div>
       </div>
       <div class="flex flex-col items-center">
         <app-table-card>
@@ -25,9 +27,9 @@
 				</thead>
 				<tbody>
 					<!-- TR DATA ROW START -->
-					<tr v-for="(item, idx) in employee" :key="idx">
+					<tr>
 						<td class="border text-center p-4">
-							<a href="#"> {{ item.name }} </a>
+							<a href="#"> John Lenon </a>
 						</td>
 						<td class="border text-center p-4 bg-green-500 text-white">P</td>
 						<td class="border text-center p-4 bg-red-500 text-white">A</td>
@@ -35,6 +37,26 @@
 						<td class="border text-center p-4 bg-red-500 text-white">A</td>						<td class="border text-center p-4 bg-green-500 text-white">P</td>
 					</tr>
 					<!-- TR DATA ROW END -->
+					<tr>
+						<td class="border text-center p-4">
+							<a href="#"> John Lenon </a>
+						</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+						<td class="border text-center p-4 bg-red-500 text-white">A</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+					</tr>
+					<tr>
+						<td class="border text-center p-4">
+							<a href="#"> John Lenon </a>
+						</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+					</tr>
 
 				</tbody>
 			</table>
@@ -46,38 +68,26 @@
 </template>
 
 <script>
-import Nav from '../../components/Navigasi'
-import Background from '../../components/Background'
-import TableCard from '../../components/TableCard'
-import { mapGetters, mapActions } from 'vuex'
+import Nav from '../components/Navigasi'
+import Background from '../components/Background'
+import TableCard from '../components/TableCard'
 
 export default {
   name: 'App',
   components: {
     AppNav: Nav,
     AppBack: Background,
-		AppTableCard: TableCard
+    AppTableCard: TableCard,
   },
   data: () => ({
-    state: {
-			date : new Date()
-		}
-	}),
-	methods: {
-    ...mapActions({
-      fetchEmployee: 'employee/fetchEmployee',
-		})
-	},
-	computed: {
-	...mapGetters({
-		employee: 'employee/listEmployee'
-		})
-	},
-	async created() {
-    await this.fetchEmployee();
-  },
+    //
+  }),
   props: [
     "icon"
   ]
 }
 </script>
+
+<style scoped>
+
+</style>

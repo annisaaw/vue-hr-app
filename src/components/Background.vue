@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<div class="bg-gray-200 min-h-screen min-w-screen">
-			<div class="bot-bg bg-gray-600 min-w-screen">
+	<div class="bg-gray-200 min-h-screen min-w-screen">
+		<div class="bot-bg bg-gray-600">
+			<div class="max-w-5xl mx-auto">
 				<slot></slot>
 			</div>
 		</div>
