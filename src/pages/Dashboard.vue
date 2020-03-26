@@ -1,8 +1,8 @@
 <template>
   <app-back>
-    <div class="container max-w-5xl mx-auto">
+    <div class="bg-black-alt font-sans leading-normal tracking-normal">
       <app-nav></app-nav>
-      <div class="flex">
+      <div class="container w-full mx-auto pt-20 flex mt-6">
         <app-card-mini>
           <template v-slot:titleCard>Total Employee</template>
           <template v-slot:contentCard>

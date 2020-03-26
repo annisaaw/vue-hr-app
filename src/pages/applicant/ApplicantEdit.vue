@@ -1,8 +1,8 @@
 <template>
 	<app-back>
-		<div class="container max-w-5xl mx-auto">
+		<div class="bg-black-alt font-sans leading-normal tracking-normal">
 			<app-nav class="mb-5"></app-nav>
-				<form action="" method="edit">
+				<form class="mx-auto pt-20 mt-6 m-5 px-8" action="" method="edit">
 					<div class="flex justify-between">
 						<h1 class="text-white text-2xl">Edit Employee</h1>
 						<div class="items-center my-3">
