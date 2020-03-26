@@ -32,7 +32,7 @@
 						<router-link to="/" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-pink-400" tag="a" active-class="text-white border-pink-400" exact><font-awesome-icon :icon="['fa', 'home']" />&emsp;<span class="pb-1 md:pb-0 text-sm">Dashboard</span></router-link>
 					</li>
 					<li class="mr-6 my-2 md:my-0">
-						<router-link to="/employees" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-pink-400" tag="a" active-class="text-white border-pink-400" exact><font-awesome-icon :icon="['fa', 'briefcase']" />&emsp;<span class="pb-1 md:pb-0 text-sm">Employees</span></router-link>
+						<router-link to="/employees" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-white border-b-2 border-gray-900  hover:border-red-400" tag="a" active-class="text-white border-red-400" exact><font-awesome-icon :icon="['fa', 'briefcase']" />&emsp;<span class="pb-1 md:pb-0 text-sm">Employees</span></router-link>
 					</li>
 					<li class="mr-6 my-2 md:my-0">
 						<router-link to="/attendance" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-purple-400" tag="a" active-class="text-white border-purple-400" exact><font-awesome-icon :icon="['far', 'clock']" />&emsp;<span class="pb-1 md:pb-0 text-sm">Attendance</span></router-link>

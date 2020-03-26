@@ -84,7 +84,7 @@
     },
     {
       "id": 24,
-      "name": "Bryan",
+      "name": "Bryan hehe",
       "email": "bryan@mail.com",
       "gender": "male",
       "image": "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
@@ -92,9 +92,9 @@
       "birthplace": "Jogja",
       "phone": "081789567",
       "job_id": 81,
+      "status_id": 41,
       "position": "Manager",
       "Division": "Research and Development",
-      "status_id": 41,
       "status": "Permanent"
     },
     {
