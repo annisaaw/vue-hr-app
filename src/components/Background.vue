@@ -8,12 +8,6 @@
 	</div>
 </template>
 
-<script>
-	export default {
-			
-	}
-</script>
-
 <style scoped>
 .bot-bg {
 	height: 40vh;

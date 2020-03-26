@@ -32,7 +32,7 @@
 						<td class="border text-center p-4 bg-green-500 text-white">P</td>
 						<td class="border text-center p-4 bg-red-500 text-white">A</td>
 						<td class="border text-center p-4 bg-green-500 text-white">P</td>
-						<td class="border text-center p-4 bg-red-500 text-white">A</td>						<td class="border text-center p-4 bg-green-500 text-white">P</td>
+						<td class="border text-center p-4 bg-red-500 text-white">A</td>					<td class="border text-center p-4 bg-green-500 text-white">P</td>
 					</tr>
 					<!-- TR DATA ROW END -->
 
@@ -65,16 +65,19 @@ export default {
 	}),
 	methods: {
     ...mapActions({
-      fetchEmployee: 'employee/fetchEmployee',
+			fetchEmployee: 'employee/fetchEmployee',
+			fetchAttendance: 'attendance/fetchAttendance'
 		})
 	},
 	computed: {
 	...mapGetters({
-		employee: 'employee/listEmployee'
+		employee: 'employee/listEmployee',
+		listAttendance: 'attendance/listAttendance'
 		})
 	},
 	async created() {
-    await this.fetchEmployee();
+		await this.fetchEmployee();
+    await this.fetchAttendance();
   },
   props: [
     "icon"
