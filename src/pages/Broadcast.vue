@@ -2,7 +2,7 @@
   <app-back>
     <div class="bg-black-alt font-sans leading-normal tracking-normal">
       <app-nav></app-nav>
-      <div class="container w-full mx-auto pt-20 flex mt-6 flex m-5 justify-between items-center px-8">
+      <div class="container px-8 mx-auto  flex mt-6 flex m-5 justify-between items-center">
 			<h1 class="text-3xl text-white">Broadcast Message</h1>
       </div>
       <div class="flex flex-col items-center">
