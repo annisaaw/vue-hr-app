@@ -206,6 +206,9 @@ export default {
 		await this.fetchApplicants();
 		await this.fetchAppStatus();
 		await this.fetchJob();
-	}
+	},
+    beforeRouteEnter (to, from, next) {
+        window.$cookies.get('user_login') ? next() : next({ name: 'login', query: { redirect: 'add_applicants' } })
+    }
 }
 </script>

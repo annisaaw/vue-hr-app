@@ -211,6 +211,9 @@ export default {
 			await this.fetchEmployee();
 			await this.fetchJob();
 			await this.fetchStatus();
-  },
+        },
+        beforeRouteEnter (to, from, next) {
+            window.$cookies.get('user_login') ? next() : next({ name: 'login', query: { redirect: 'add' } })
+        }
 }
 </script>

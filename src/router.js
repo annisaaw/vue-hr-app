@@ -64,6 +64,11 @@ const router = new Router({
         path: '/broadcast-message',
         name: 'broadcast-message',
         component: () => import('./pages/Broadcast.vue')
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('./pages/Login.vue')
       }
     //   {
     //     path: '/login',

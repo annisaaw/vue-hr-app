@@ -3,6 +3,7 @@ import App from './App.vue'
 import './tailwind.css'
 import router from './router'
 import store from './store/store.js'
+import VueCookies from 'vue-cookies'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -116,6 +117,8 @@ library.add(faUserSecret)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
+
+Vue.use(VueCookies);
 
 new Vue({
   router,

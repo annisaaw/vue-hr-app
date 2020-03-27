@@ -227,6 +227,9 @@ export default {
 		await this.fetchJob();
 		await this.fetchAppStatus();
 		await this.editValue();
-  },
+    },
+    beforeRouteEnter (to, from, next) {
+        window.$cookies.get('user_login') ? next() : next({ name: 'login', query: { redirect: 'edit_applicants' } })
+    }
 }
 </script>

@@ -126,6 +126,9 @@ export default {
 		await this.fetchLeaveReq();
 		await this.fetchLeaveStat();
 		await this.fetchJob();
-	}
+	},
+    beforeRouteEnter (to, from, next) {
+        window.$cookies.get('user_login') ? next() : next({ name: 'login', query: { redirect: 'add_leave_request' } })
+    }
 }
 </script>

@@ -146,7 +146,10 @@ export default {
   }),
   props: [
     "icon"
-  ]
+  ],
+  beforeRouteEnter (to, from, next) {
+    window.$cookies.get('user_login') ? next() : next({ name: 'login', query: { redirect: 'dashboard' } })
+  }
 }
 </script>
 
