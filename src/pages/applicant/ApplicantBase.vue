@@ -2,7 +2,7 @@
   <app-back>
     <div class="bg-black-alt font-sans leading-normal tracking-normal">
       <app-nav></app-nav>
-      <div class="px-8 container w-full mx-auto pt-20 flex mt-6 flex m-5 justify-between items-center">
+      <div class="px-8 container w-full mx-auto flex mt-6 flex m-5 justify-between items-center">
 			<h1 class="text-3xl text-white">Applicant List</h1>
 			<div>
 				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export CSV</a>

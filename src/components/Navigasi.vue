@@ -1,6 +1,6 @@
 <template>
-	<nav id="header" class="bg-gray-900 fixed min-w-full z-10 top-0 left-0 shadow">
-		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0 max-w-5xl">
+	<nav id="header" class="bg-gray-900 min-w-full z-10 top-0 left-0 shadow">
+		<div class=" container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0 max-w-5xl">
 			<div class="w-1/2 pl-2 md:pl-0">
 				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold" href="#"> 
 					<font-awesome-icon :icon="['fa', 'user-secret']" /> &emsp; HR Application
@@ -42,7 +42,7 @@
 					</li>
 					<li class="mr-6 my-2 md:my-0"> 
 						<router-link to="/leave-requests" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-red-400" tag="a" active-class="text-white border-red-400">
-							<font-awesome-icon :icon="['fa', 'tags']" />&emsp;<span class="pb-1 md:pb-0 text-sm">Leave Request</span><span class="p-1 bg-yellow-500 text-black rounded-sm ml-1 text-xs">2</span>
+							<font-awesome-icon :icon="['fa', 'tags']" />&emsp;<span class="pb-1 md:pb-0 text-sm">Leave Request</span><span class="p-1 bg-yellow-500 text-black rounded-sm ml-1 text-xs">{{sumLeaveRequest()}}</span>
 						</router-link> 
 					</li>
 					<li class="mr-6 my-2 md:my-0">
