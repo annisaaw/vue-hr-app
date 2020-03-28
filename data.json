@@ -22,17 +22,17 @@
   "event": [
     {
       "id": 31,
-      "date": "25 Maret",
-      "desc": "Nyepi"
+      "date": "2020-04-20",
+      "desc": "Hari Raya Nyepi"
     },
     {
       "id": 32,
-      "date": "21 April",
+      "date": "2020-02-01",
       "desc": "Kartini"
     },
     {
       "id": 33,
-      "date": "17 Agustus",
+      "date": "2020-04-28",
       "desc": "Dirgahayu Indonesia"
     }
   ],
@@ -498,6 +498,42 @@
     {
       "id": 5,
       "date": "27-03-2020",
+      "data": [
+        {
+          "id": 21,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 22,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 23,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 24,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 25,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 26,
+          "clock_in": "",
+          "clock_out": ""
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "date": "28-03-2020",
       "data": [
         {
           "id": 21,

@@ -58,6 +58,9 @@
                   <td class="py-2 border-b" style="max-width: 3rem">
                     <p>{{ item.desc }}</p>
                   </td>
+                  <td class="px-2 py-2 border-b">
+                    <router-link :to="{name: 'edit_event', params: { id: item.id}}" tag="a" class="hover:text-yellow-500"><font-awesome-icon :icon="['fa', 'angle-right']" size="lg" /></router-link>
+                  </td>
                 </tr>
               </table>
             </div>

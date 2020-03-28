@@ -13,8 +13,9 @@ import LeaveBase from './pages/leave_request/LeaveBase'
 import LeaveAdd from './pages/leave_request/LeaveAdd'
 import Attendance from './pages/attendance/Attendance'
 import AttendanceBase from './pages/attendance/AttendanceBase'
-
-
+import Event from './pages/event/Event'
+import EventAdd from './pages/event/EventAdd'
+import EventEdit from './pages/event/EventEdit'
 
 Vue.use(Router);
 
@@ -69,6 +70,14 @@ const router = new Router({
         path: '/login',
         name: 'login',
         component: () => import('./pages/Login.vue')
+      },
+      {
+        path: '/event',
+        component: Event,
+        children: [
+          { path: 'add_event', component: EventAdd, name: 'add_event' },
+          { path: ':id/edit_event', component: EventEdit, name: 'edit_event' }
+        ]
       }
     //   {
     //     path: '/login',
