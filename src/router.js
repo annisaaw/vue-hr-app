@@ -14,8 +14,6 @@ import LeaveAdd from './pages/leave_request/LeaveAdd'
 import Attendance from './pages/attendance/Attendance'
 import AttendanceBase from './pages/attendance/AttendanceBase'
 
-
-
 Vue.use(Router);
 
 const router = new Router({

@@ -37,7 +37,7 @@
           <template v-slot:titleCard>Today's Present</template>
           <template v-slot:contentCard>
             <div class="m-1 flex items-center justify-center">
-              <p class="present">8</p><span class="text-gray-400">/100</span>
+              <p class="present">0</p><span class="text-gray-400">/ {{ totalEmp() }}</span>
             </div>
           </template>
         </app-card-mini>

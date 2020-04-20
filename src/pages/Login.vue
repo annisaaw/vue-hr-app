@@ -29,11 +29,11 @@ export default {
         }
     },
     methods: {
-        ...mapActions({
-			fetchUser: 'user/fetchUser'
-        }),
-        login(){
-			var getUser = this.user.findIndex(obj => obj.username === this.username && obj.password === this.password);
+			...mapActions({
+				fetchUser: 'user/fetchUser'
+			}),
+			login(){
+				var getUser = this.user.findIndex(obj => obj.username === this.username && obj.password === this.password);
 
 			if(getUser == -1) {
 				this.error = true;
@@ -49,7 +49,7 @@ export default {
       }),
     },
     created(){
-		this.fetchUser();
+			this.fetchUser();
     },
     beforeRouteEnter (to, from, next) {
       window.$cookies.get('user_login') ? next({ name: 'dashboard' }) : next()
