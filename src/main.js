@@ -111,9 +111,6 @@ library.add(
   faYoutubeSquare
 )
 
-
-library.add(faUserSecret)
-
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false

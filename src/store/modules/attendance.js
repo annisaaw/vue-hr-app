@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const state = {
 	attendance: [],
+	timeIn: '',
+	timeOut: ''
 }
 
 const actions = {
@@ -34,6 +36,9 @@ const actions = {
 		if (state.attendance.find( a => a.date === dt )) return;
 		await axios.post('http://localhost:3000/attendance', star);
 		dispatch('fetchAttendance')
+	},
+	timeIn({ state, payload }) {
+		state.timeIn = payload
 	}
 }
 
