@@ -37,8 +37,11 @@ const actions = {
 		await axios.post('http://localhost:3000/attendance', star);
 		dispatch('fetchAttendance')
 	},
-	timeIn({ state, payload }) {
-		state.timeIn = payload
+	timeIn({ state }, timeIn) {
+		state.timeIn = timeIn
+	},
+	timeOut({ state }, timeOut){
+		state.timeOut = timeOut
 	}
 }
 

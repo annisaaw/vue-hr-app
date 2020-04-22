@@ -179,7 +179,7 @@ export default {
     attend(idx) { 
       let today = new Date();
       let time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-      console.log(time);
+
       if (idx === 0) {
         this.timeIn = time;
       } else if (idx === 1) {
@@ -193,7 +193,9 @@ export default {
   watch: {
     timeIn() {
       this.$store.dispatch('attendance/timeIn', this.timeIn);
-      console.log(this.$store.state.attendance.timeIn);
+    },
+    timeOut() {
+      this.$store.dispatch('attendance/timeOut', this.timeOut);
     }
   },
   computed: {
