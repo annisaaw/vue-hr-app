@@ -2,8 +2,8 @@
     <div class="w-full flex justify-center items-center min-h-screen">   
         <form class="bg-orange-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/4" @submit.prevent="login()">
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-orange-100" id="username" type="text" placeholder="Username" value="admin" v-model="username" :class="{ 'border-red-600' : error }">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-orange-100" id="username" type="email" placeholder="Email" value="rinoganteng@mail.start" v-model="email" :class="{ 'border-red-600' : error }">
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
@@ -18,38 +18,33 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
     data(){
-        return{
-            username: 'admin',
-            password: 'admin',
-            error: false
-        }
+      return{
+          email: 'john.doe@mail.com',
+          password: 'kompas',
+          error: false
+      }
     },
     methods: {
-			...mapActions({
-				fetchUser: 'user/fetchUser'
-			}),
 			login(){
-				var getUser = this.user.findIndex(obj => obj.username === this.username && obj.password === this.password);
-
+				var getUser = this.emp.findIndex(ob => ob.email === this.email && ob.password === this.password);
+        // console.log(this.emp.findIndex(a=>a.email === this.email), 'test');
 			if(getUser == -1) {
 				this.error = true;
 				return
-			}
-			this.$cookies.set('user_login',this.user[getUser].username,'23h');
+      }
+
+      this.$cookies.set('user_login',this.emp[getUser].id,'23h');
 			this.$router.push({ name: 'dashboard' });
         }
     },
     computed: {
       ...mapGetters({
-        user: 'user/listUser',
+        emp: 'employee/listEmployee'
       }),
-    },
-    created(){
-			this.fetchUser();
     },
     beforeRouteEnter (to, from, next) {
       window.$cookies.get('user_login') ? next({ name: 'dashboard' }) : next()
@@ -57,5 +52,3 @@ export default {
 }
 </script>
 
-<style>
-</style>

@@ -3,12 +3,6 @@
     <div class="bg-black-alt font-sans leading-normal tracking-normal">
       <app-nav></app-nav>
 			<h1 class="text-3xl text-white ml-4 mt-4">Attendance</h1>
-      <div class="flex justify-around items-center m-2" >
-				<div class="-mb-px mr-1 cursor-pointer">
-					<a href="#" class="bg-green-500 rounded-full hover:bg-green-600 p-6 mx-4 text-md text-white rounded" @click="clockIn()">Clock In!</a>
-					<a href="#" class="bg-red-500 rounded-full hover:bg-green-600 p-6 mx-4 text-md text-white rounded" @click="clockIn()">Clock Out!</a>
-				</div>
-      </div>
 			<div class="w-full text-center overflow-y-auto max-h-75" >
 				<div class="flex border-gray-200 border-b-none flex-wrap">
 					<div class="flex justify rounded" v-for="(item, idx) in menu" :key="idx" @click="activeIdx=idx">
@@ -19,22 +13,26 @@
       <div class="w-full text-center overflow-y-auto max-h-75" >
 				<div class="flex p-6 border-l border-r border-t flex-wrap sticky top-0 bg-gray-300 z-10">
 						<div class="items-center w-2/12 text-left">Employee / Date</div>
-						<div v-for="(item, idx) in listAttendance" :key="idx" class="flex items-center justify-center w-2/12 px-2">
+						<div v-for="(item, idx) in dateAttendance()" :key="idx" class="flex items-center justify-center w-2/12 px-2">
 							<div class="font-bold">
-								<p>{{item.date}}</p>
+								<p>{{ item }}</p>
 							</div>
 						</div>
 				</div>
+				<!-- start: list employee of attendance -->
 				<div v-for="(item, idx) in listEmployee" :key="idx">
 					<div class="flex p-6 border-b-4 border-gray-400 hover:bg-gray-100 flex-wrap sticky top-0 bg-white z-10">
+						<!-- start: user column -->
 						<div class="items-center w-2/12 text-left">{{item.name}}</div>
-						<p>{{listAttendance.map(a => a.date).slice(2)}}</p>
-						<div class="flex items-center justify-center w-2/12 px-2" v-for="att in listAttendance.slice(2)" :key="att.date">
+						<!-- end: user column -->
+						<!-- <p>{{listAttendance.length}}</p> -->
+						<div class="flex items-center justify-center w-2/12 px-2" v-for="att in listAttendance.slice(-5).reverse()" :key="att.date">
 							<span class="font-bold" v-if="activeIdx" :class="getClockOut(att.date, item.id) == '-' ? 'text-red-500' : 'text-green-500'"> {{ getClockOut(att.date, item.id) }} </span>
 							<span class="font-bold" v-else :class="getClockIn(att.date, item.id) == '-' ? 'text-red-500' : 'text-green-500'"> {{ getClockIn(att.date, item.id) }} </span>
 						</div>
 					</div>
 				</div>
+				<!-- end: list employee of attendance -->
       </div>
 		</div>
   </app-back>
@@ -62,8 +60,7 @@ export default {
 		dataReady: false,
 	}),
 	methods: {
-    ...mapActions({
-			fetchEmployee: 'employee/fetchEmployee',
+		...mapActions({
 			fetchAttendance: 'attendance/fetchAttendance',
 			fetchAttendanceTime: 'attendance/attendanceTime'
 		}),
@@ -74,6 +71,7 @@ export default {
 			return this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id) && this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id).clock_in ? this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id).clock_in : '-'
 		},
 		getClockOut(date, id) {
+			// return this.listAttendance.find(ob=>ob.date === date)
 			return this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id) &&this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id).clock_out ? this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id).clock_out : '-'
 		}, 
 		clockIn(){
@@ -120,6 +118,19 @@ export default {
 			this.hasClockOut = this.getHoursNow();
 			this.updateClockOut(fix);
 			}
+		},
+		dateAttendance() {
+			if (!this.listAttendance) return;
+			let source = this.listAttendance;
+			let res = [];
+			source.forEach(e => {
+				res.push(e.date)
+			});
+			// console.log(res.length, 'LENGTH');
+			if (res.length >= 5) {
+				res = res.reverse().slice(0, 5)
+			}
+			return res.values();
 		}
 	},
 	computed: {
@@ -142,7 +153,7 @@ export default {
 			return this.leaveReaquest.filter(a => a.leave_date.includes(this.dateLegalFormat()) && a.status === 1)
 		},
 		getSelfAttd(){
-			console.log(this.listAttendance.find(a => a.date === this.dateLegalFormat()), 'HOOH')
+			// console.log(this.listAttendance.find(a => a.date === this.dateLegalFormat()), 'HOOH')
 			return this.listAttendance.find(a => a.date === this.dateLegalFormat()) ? this.listAttendance.find(a => a.date === this.dateLegalFormat()).data.find(b => b.id == this.$cookies.get('local_login')) : '';
 		},
 
@@ -154,10 +165,9 @@ export default {
 		}
 	},
 	async created() {
-		await this.fetchEmployee();
+		await this.fetchAttendanceTime();
 		await this.fetchAttendance();
-		await this.fetchAttendanceTime()
-  },
+	},
   props: [
     "icon"
   ],

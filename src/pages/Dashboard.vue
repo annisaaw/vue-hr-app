@@ -6,10 +6,12 @@
       <div 
         v-for="(item, idx) in attendance.type" :key="idx"
         @click="attend(idx)">
-        <button class="rounded-full h-20 w-20 flex items-center justify-center bg-white opacity-75"
-        @click="activeIdx=idx" 
-        :class="{ 'bg-green-600 opacity-100' : activeIdx === idx }"
-        >{{ item }}</button>
+        <div class="rounded-full h-24 w-24 flex items-center justify-center bg-gray-400">
+          <button class="rounded-full h-20 w-20 flex items-center justify-center bg-white opacity-75 focus:outline-none"
+          @click="activeIdx=idx" 
+          :class="{ 'bg-green-600 opacity-100' : activeIdx === idx }"
+          >{{ item }}</button>
+        </div>
       </div>
     </div>
     <!-- end: attendance button -->
@@ -103,8 +105,8 @@
                     <td class="w-1/5">
                       <font-awesome-icon :icon="['far', 'clock']" />
                     </td>
-                    <td class="border-b w-2/5">{{ timeIn }}</td>
-                    <td class="border-b w-2/5">{{ timeOut }}</td>
+                    <td class="border-b w-2/5">{{ clockIn }}</td>
+                    <td class="border-b w-2/5">{{ clockOut }}</td>
                   </tr>
                 </table>
               </div>
@@ -137,8 +139,6 @@
         </app-card-medium>
       </div>
     </div>
-    
-
   </app-back>
   
 </template>
@@ -178,32 +178,41 @@ export default {
     },
     attend(idx) { 
       let today = new Date();
-      let time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-
-      if (idx === 0) {
-        this.timeIn = time;
-      } else if (idx === 1) {
-        this.timeOut = time;
-      } else {
-        return;
-      }
-      return time;
-    }
+      let time = today.getHours() + ':' + today.getMinutes();
+      console.log(this.getSelfAttd);
+      return idx ? (this.clockOut = time) : (this.clockIn = time);
+    },
+    dateLegalFormat() {
+      console.log(this.intlDateTimeFormat[0]+'-'+this.intlDateTimeFormat[1]+'-'+this.intlDateTimeFormat[2], 'LEGAL');
+			return this.intlDateTimeFormat[0]+'-'+this.intlDateTimeFormat[1]+'-'+this.intlDateTimeFormat[2];
+    },
   },
   watch: {
-    timeIn() {
-      this.$store.dispatch('attendance/timeIn', this.timeIn);
+    clockIn() {
+      this.$store.dispatch('attendance/clockIn', this.clockIn);
     },
-    timeOut() {
-      this.$store.dispatch('attendance/timeOut', this.timeOut);
+    clockOut() {
+      this.$store.dispatch('attendance/clockOut', this.clockOut);
     }
   },
   computed: {
     ...mapGetters({
       allEmployee: 'employee/listEmployee',
       allEvent: 'event/listEvent',
-      allApplicant: 'applicant/listApplicant'
-    })
+      allApplicant: 'applicant/listApplicant',
+			listAttendance: 'attendance/listAttendance'
+    }),
+    intlDateTimeFormat(){
+			let d = new Date();
+			return [
+				new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d),
+				new Intl.DateTimeFormat('en', { month: '2-digit' }).format(d),
+				new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
+			]
+    },
+    getSelfAttd(){
+      return this.listAttendance.find(a=>a.date === this.dateLegalFormat()) ? this.listAttendance.find(a=>a.date === this.dateLegalFormat()).data.find(b=>b.id == this.$cookies.get('user_login')) : 'wrong!';
+		},
   },
   async created() {
     await this.fetchEmployee();
@@ -211,13 +220,14 @@ export default {
     await this.fetchApplicant();
   },
   data: () => ({
-    timeIn: '',
-    timeOut: '',
+    clockClicked: false,
+    clockIn: '',
+    clockOut: '',
     activeIdx: -1,
     attendance: {
       type: [
-        'MASUK',
-        'KELUAR'
+        'Clock In',
+        'Clock Out'
       ]
     }
   }),

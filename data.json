@@ -50,7 +50,8 @@
       "position": "Manager",
       "Division": "Research and Development",
       "status_id": 43,
-      "status": "Probation"
+      "status": "Probation",
+      "password": "kompas"
     },
     {
       "id": 22,
@@ -65,7 +66,8 @@
       "position": "Devops",
       "Division": "Engineering",
       "status_id": 43,
-      "status": "Probation"
+      "status": "Probation",
+      "password": "kompas"
     },
     {
       "id": 23,
@@ -80,7 +82,8 @@
       "position": "Frontend Developer",
       "Division": "Engineering",
       "status_id": 42,
-      "status": "Contract"
+      "status": "Contract",
+      "password": "kompas"
     },
     {
       "id": 24,
@@ -95,7 +98,8 @@
       "status_id": 41,
       "position": "Manager",
       "Division": "Research and Development",
-      "status": "Permanent"
+      "status": "Permanent",
+      "password": "kompas"
     },
     {
       "id": 25,
@@ -110,7 +114,8 @@
       "status_id": 41,
       "position": "Devops",
       "Division": "Engineering",
-      "status": "Permanent"
+      "status": "Permanent",
+      "password": "kompas"
     },
     {
       "id": 26,
@@ -125,7 +130,8 @@
       "status_id": 41,
       "position": "Manager",
       "Division": "Research and Development",
-      "status": "Permanent"
+      "status": "Permanent",
+      "password": "kompas"
     }
   ],
   "employee_status": [
@@ -537,8 +543,8 @@
       "data": [
         {
           "id": 21,
-          "clock_in": "",
-          "clock_out": ""
+          "clock_in": "13:04:44",
+          "clock_out": "14:01:50"
         },
         {
           "id": 22,
@@ -600,6 +606,150 @@
           "id": 26,
           "clock_in": "",
           "clock_out": ""
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "date": "23-04-2020",
+      "data": [
+        {
+          "id": 21,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 22,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 23,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 24,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 25,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 26,
+          "clock_in": "",
+          "clock_out": ""
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "date": "24-04-2020",
+      "data": [
+        {
+          "id": 21,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 22,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 23,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 24,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 25,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 26,
+          "clock_in": "",
+          "clock_out": ""
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "date": "26-04-2020",
+      "data": [
+        {
+          "id": 21,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 22,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 23,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 24,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 25,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 26,
+          "clock_in": "",
+          "clock_out": ""
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "date": "27-04-2020",
+      "data": [
+        {
+          "id": 21,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 22,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 23,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 24,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 25,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 26,
+          "clock_in": "13:53",
+          "clock_out": "17:41"
         }
       ]
     }

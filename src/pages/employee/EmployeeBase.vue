@@ -91,7 +91,6 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchEmployee: 'employee/fetchEmployee',
       fetchStatus: 'employee/fetchStatus'
 		}),
 		filterEmployee(employee) {
@@ -106,7 +105,6 @@ export default {
 		}
   },
   async created() {
-    await this.fetchEmployee();
     await this.fetchStatus();
   },
   data: () => ({
