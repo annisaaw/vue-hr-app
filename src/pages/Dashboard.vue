@@ -1,20 +1,6 @@
 <template>
   <app-back>
     <app-nav></app-nav>
-    <!-- start: attendance button -->
-    <div class="bg-black-alt w-full flex justify-around flex mt-4">
-      <div 
-        v-for="(item, idx) in attendance.type" :key="idx"
-        @click="attend(idx)">
-        <div class="rounded-full h-24 w-24 flex items-center justify-center bg-gray-400">
-          <button class="rounded-full h-20 w-20 flex items-center justify-center bg-white opacity-75 focus:outline-none"
-          @click="activeIdx=idx" 
-          :class="{ 'bg-green-600 opacity-100' : activeIdx === idx }"
-          >{{ item }}</button>
-        </div>
-      </div>
-    </div>
-    <!-- end: attendance button -->
     
     <div class="bg-black-alt font-sans leading-normal tracking-normal">
       <div class="w-full flex mt-6">
@@ -87,29 +73,39 @@
             <div class=" text-center font-bold p-4 rounded-t border-b">
               <p>Attendance</p>
             </div>
-            <div>
-              <div class="p-2">
-                <table class="table-auto w-full bg-white border text-sm">
-                  <tr class="w-full text-center">
-                    <td class="w-1/5">
-                      <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
-                    </td>
-                    <td class="border-b w-2/5">
-                      <p>Masuk Time</p>
-                    </td>
-                    <td class="border-b w-2/5" style="max-width: 3rem">
-                      <p>Keluar Time</p>
-                    </td>
-                  </tr>
-                  <tr class="w-full text-center">
-                    <td class="w-1/5">
-                      <font-awesome-icon :icon="['far', 'clock']" />
-                    </td>
-                    <td class="border-b w-2/5">{{ clockIn }}</td>
-                    <td class="border-b w-2/5">{{ clockOut }}</td>
-                  </tr>
-                </table>
+            <!-- start: attendance button -->
+            <div class="w-full flex mt-1">
+              <div class="w-full flex justify-around bg-gray-400">
+                <button 
+                  class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
+                  @click="clockIn()" :class="!hasClockIn ? 'bg-green-500':'bg-grey-300'">Clock In</button>
+                <button 
+                class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
+                @click="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
               </div>
+            </div>
+            <!-- end: attendance button -->
+            <div class="p-2">
+              <table class="table-auto w-full bg-white border text-sm">
+                <tr class="w-full text-center">
+                  <td class="w-1/5">
+                    <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
+                  </td>
+                  <td class="border-b w-2/5">
+                    <p>Masuk Time</p>
+                  </td>
+                  <td class="border-b w-2/5" style="max-width: 3rem">
+                    <p>Keluar Time</p>
+                  </td>
+                </tr>
+                <tr class="w-full text-center">
+                  <td class="w-1/5">
+                    <font-awesome-icon :icon="['far', 'clock']" />
+                  </td>
+                  <td class="border-b w-2/5">{{ checkClock(hasClockIn) }}</td>
+                  <td class="border-b w-2/5"> {{ checkClock(hasClockOut) }} </td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
@@ -162,7 +158,10 @@ export default {
     ...mapActions({
       fetchEmployee: 'employee/fetchEmployee',
       fetchEvent: 'event/fetchEvent',
-      fetchApplicant: 'applicant/fetchApplicant'
+      fetchApplicant: 'applicant/fetchApplicant',
+      syncClockIn: 'attendance/syncClockIn',
+      syncClockOut: 'attendance/syncClockOut',
+			fetchAttendanceTime: 'attendance/attendanceTime'
     }), 
     totalEmp() {
       return this.allEmployee.length
@@ -182,18 +181,70 @@ export default {
       console.log(this.getSelfAttd);
       return idx ? (this.clockOut = time) : (this.clockIn = time);
     },
+    addZero(x) {
+      return x < 10 ? "0" + x : x;
+    },
+    getTimeNow() {
+      let d = new Date();
+      let h = this.addZero(d.getHours());
+      let m = this.addZero(d.getMinutes());
+      let s = this.addZero(d.getSeconds());
+      return h + ":" + m + ":" + s;
+    },
     dateLegalFormat() {
-      console.log(this.intlDateTimeFormat[0]+'-'+this.intlDateTimeFormat[1]+'-'+this.intlDateTimeFormat[2], 'LEGAL');
 			return this.intlDateTimeFormat[0]+'-'+this.intlDateTimeFormat[1]+'-'+this.intlDateTimeFormat[2];
     },
-  },
-  watch: {
     clockIn() {
-      this.$store.dispatch('attendance/clockIn', this.clockIn);
+      if (!this.getSelfAttd.clock_in) {
+        let box = [];
+        let today = this.getTodayId.data;
+        today.forEach(ob => {
+          let temp = {
+            id: ob.id,
+            clock_in: ob.id == this.$cookies.get('user_login') ? this.getTimeNow() : ob.clock_in,
+            clock_out: ob.clock_out
+          }
+          box.push(temp)
+        });
+        let cup = {
+          id: this.getTodayId.id,
+          timeIn: {
+            date: this.dateLegalFormat(),
+            data: box
+          }
+        }
+        this.hasClockIn = this.getTimeNow();
+        console.log(cup, 'HAHA');
+        this.syncClockIn(cup);
+      }
     },
     clockOut() {
-      this.$store.dispatch('attendance/clockOut', this.clockOut);
-    }
+      if (!this.getSelfAttd.clock_out) {
+        let box = [];
+        let today = this.getTodayId.data;
+        today.forEach(ob => {
+          let temp = {
+            id: ob.id,
+            clock_in: ob.clock_in,
+            clock_out:  ob.id == this.$cookies.get('user_login') ? this.getTimeNow() : ob.clock_out
+          }
+          box.push(temp)
+        });
+        let cup = {
+          id: this.getTodayId.id,
+          timeOut: {
+            date: this.dateLegalFormat(),
+            data: box
+          }
+        }
+        this.hasClockOut = this.getTimeNow();
+        console.log(cup, 'HAHA');
+        this.syncClockOut(cup)
+      }
+    },
+    checkClock(a){
+      return a ? a : '-';
+    },
   },
   computed: {
     ...mapGetters({
@@ -211,18 +262,29 @@ export default {
 			]
     },
     getSelfAttd(){
-      return this.listAttendance.find(a=>a.date === this.dateLegalFormat()) ? this.listAttendance.find(a=>a.date === this.dateLegalFormat()).data.find(b=>b.id == this.$cookies.get('user_login')) : 'wrong!';
-		},
+      return this.listAttendance.find(a=>a.date === this.dateLegalFormat()) ? this.listAttendance.find(a=>a.date === this.dateLegalFormat()).data.find(b=>b.id == this.$cookies.get('user_login')) : '';
+    },
+    getTodayId() {
+      return this.listAttendance.find(a=>a.date === this.dateLegalFormat())
+    },
+  },
+  watch: {
+    listAttendance() {
+      if (this.listAttendance.find(a=>a.date === this.dateLegalFormat())) this.dataReady = true;
+    }
   },
   async created() {
     await this.fetchEmployee();
     await this.fetchEvent();
     await this.fetchApplicant();
+		await this.fetchAttendanceTime();
+    this.hasClockIn = this.getSelfAttd.clock_in ? this.getSelfAttd.clock_in : false;
+    this.hasClockOut = this.getSelfAttd.clock_out ? this.getSelfAttd.clock_out : false;
   },
   data: () => ({
-    clockClicked: false,
-    clockIn: '',
-    clockOut: '',
+    hasClockIn: false,
+    hasClockOut: false,
+    dataReady: false,
     activeIdx: -1,
     attendance: {
       type: [

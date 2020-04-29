@@ -9,7 +9,7 @@
 			<div class="w-1/2 pr-0">
 				<div class="flex relative inline-block float-right">
 					<div class="relative text-sm text-gray-100">
-						<button id="userButton" class="flex items-center focus:outline-none mr-3"  @click="show = !show">
+						<button id="userButton" class="flex items-center focus:outline-none mr-3" @click="show = !show">
 							<img class="w-8 h-8 rounded-full mr-4" :src="isLoggedInAvatar"
 							alt="Avatar of User"> <span class="hidden md:inline-block text-gray-100">Hi, {{isLoggedIn}}</span>
 							<span class="px-1" ><font-awesome-icon :icon="['fa', 'angle-down']" /></span>

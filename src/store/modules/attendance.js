@@ -23,7 +23,10 @@ const actions = {
 		let last_id = state.attendance.length>0 ? (state.attendance[state.attendance.length-1].id) : 0;
 
 		for(let i=0;i<rootState.employee.employee.length;i++){
-			let temp = { "id": rootState.employee.employee[i].id, "clock_in": "", "clock_out": "" }
+			let temp = { 
+				"id": rootState.employee.employee[i].id, 
+				"clock_in": "", "clock_out": ""
+			}
 			items.push(temp);
 		}
 
@@ -33,16 +36,18 @@ const actions = {
 			"data": items
 		}
 		if (state.attendance.find( a => a.date === dt )) return;
-
 		await axios.post('http://localhost:3000/attendance', star);
 		dispatch('fetchAttendance')
 	},
-	clockIn({ state }, clockIn) {
-		state.clockIn = clockIn
-		// await axios.post('http://localhost:3000')
+	syncClockIn({state},payload) {
+		console.log(payload, 'store-in');
+		axios.put('http://localhost:3000/attendance/'+ payload.id, payload.timeIn )
+		state
 	},
-	clockOut({ state }, clockOut){
-		state.clockOut = clockOut
+	syncClockOut({state}, payload){
+		console.log(payload, 'store out');
+		axios.put('http://localhost:3000/attendance/'+ payload.id, payload.timeOut )
+		state
 	}
 }
 

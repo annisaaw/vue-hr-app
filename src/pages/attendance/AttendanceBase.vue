@@ -20,15 +20,18 @@
 						</div>
 				</div>
 				<!-- start: list employee of attendance -->
-				<div v-for="(item, idx) in listEmployee" :key="idx">
-					<div class="flex p-6 border-b-4 border-gray-400 hover:bg-gray-100 flex-wrap sticky top-0 bg-white z-10">
-						<!-- start: user column -->
-						<div class="items-center w-2/12 text-left">{{item.name}}</div>
-						<!-- end: user column -->
-						<!-- <p>{{listAttendance.length}}</p> -->
-						<div class="flex items-center justify-center w-2/12 px-2" v-for="att in listAttendance.slice(-5).reverse()" :key="att.date">
-							<span class="font-bold" v-if="activeIdx" :class="getClockOut(att.date, item.id) == '-' ? 'text-red-500' : 'text-green-500'"> {{ getClockOut(att.date, item.id) }} </span>
-							<span class="font-bold" v-else :class="getClockIn(att.date, item.id) == '-' ? 'text-red-500' : 'text-green-500'"> {{ getClockIn(att.date, item.id) }} </span>
+				<div v-if="listEmployee">
+					<div v-for="(item, idx) in listEmployee" :key="idx">
+						<div class="flex p-6 border-b-4 border-gray-400 hover:bg-gray-100 flex-wrap sticky top-0 bg-white z-10">
+							<!-- start: user column -->
+							<div class="items-center w-2/12 text-left">{{item.name}}</div>
+							<!-- end: user column -->
+							<!-- start: attendance time -->
+							<div class="flex items-center justify-center w-2/12 px-2" v-for="att in listAttendance.slice(-5).reverse()" :key="att.date">
+								<span class="font-bold" v-if="activeIdx" :class="getClockOut(att.date, item.id) == '-' ? 'text-red-500' : 'text-green-500'"> {{ getClockOut(att.date, item.id) }} </span>
+								<span class="font-bold" v-else :class="getClockIn(att.date, item.id) == '-' ? 'text-red-500' : 'text-green-500'"> {{ getClockIn(att.date, item.id) }} </span>
+							</div>
+							<!-- end: attendance time -->
 						</div>
 					</div>
 				</div>
@@ -62,7 +65,7 @@ export default {
 	methods: {
 		...mapActions({
 			fetchAttendance: 'attendance/fetchAttendance',
-			fetchAttendanceTime: 'attendance/attendanceTime'
+			// fetchAttendanceTime: 'attendance/attendanceTime'
 		}),
 		dateLegalFormat() {
 			return this.intlDateTimeFormat[0]+'-'+this.intlDateTimeFormat[1]+'-'+this.intlDateTimeFormat[2];
@@ -71,53 +74,7 @@ export default {
 			return this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id) && this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id).clock_in ? this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id).clock_in : '-'
 		},
 		getClockOut(date, id) {
-			// return this.listAttendance.find(ob=>ob.date === date)
 			return this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id) &&this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id).clock_out ? this.listAttendance.find(ob=>ob.date === date).data.find(d=>d.id == id).clock_out : '-'
-		}, 
-		clockIn(){
-			if(!this.getSelfAttd.clock_out){
-				let parseData = [];
-				console.log(this.getTodayId, 'ID')
-				for(let i=0;i<this.getTodayId.data.length;i++){
-					let temp = { 
-						id: this.getTodayId.data[i].id,
-						clock_in: this.getTodayId.data[i].clock_in,
-						clock_out: this.getTodayId.data[i].id == this.$cookies.get('local_login') ? this.getHoursNow() : this.getTodayId.data[i].clock_out
-					}
-					parseData.push(temp);
-				}
-				let star = {
-					id: this.getTodayId.id,
-					item: {
-						date: this.dateLegalFormat(),
-						data: parseData
-					}
-				}
-				this.hasClockOut = this.getHoursNow();
-				this.updateClockOut(star);
-			}
-		},
-		clockOut(){
-			if(!this.getSelfAttd.clock_out){
-				let parseData = [];
-				for(let i=0;i<this.getTodayId.data.length;i++){
-					let temp = { 
-						id: this.getTodayId.data[i].id,
-						clock_in: this.getTodayId.data[i].clock_in,
-						clock_out: this.getTodayId.data[i].id == this.$cookies.get('local_login') ? this.getHoursNow() : this.getTodayId.data[i].clock_out
-					}
-					parseData.push(temp);
-				}
-				let fix = {
-					id: this.getTodayId.id,
-					doto: {
-							date: this.dateLegalFormat(),
-							data: parseData
-					}
-				}
-			this.hasClockOut = this.getHoursNow();
-			this.updateClockOut(fix);
-			}
 		},
 		dateAttendance() {
 			if (!this.listAttendance) return;
@@ -165,7 +122,7 @@ export default {
 		}
 	},
 	async created() {
-		await this.fetchAttendanceTime();
+		// await this.fetchAttendanceTime();
 		await this.fetchAttendance();
 	},
   props: [
