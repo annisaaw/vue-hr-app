@@ -11,8 +11,8 @@ const actions = {
 		let res = await axios.get('http://localhost:3000/attendance');
 		commit('ATTENDACE', res.data)
 	},
-	async attendanceTime({state, dispatch, rootState}) {
-		// await dispatch('employee/fetchEmployee')
+	async attendanceTime({state, dispatch, rootState, getters }) {
+		console.log(getters.listEmployee, 'root');
 		await dispatch('fetchAttendance')
 		let items = [];
 		let d = new Date();
@@ -22,7 +22,7 @@ const actions = {
 		const dt = da+'-'+mo+'-'+ye;
 		let last_id = state.attendance.length>0 ? (state.attendance[state.attendance.length-1].id) : 0;
 
-		for(let i=0;i<rootState.employee.employee.length;i++){
+		for(let i=0;i<getters.employee.employee.length;i++){
 			let temp = { 
 				"id": rootState.employee.employee[i].id, 
 				"clock_in": "", "clock_out": ""
@@ -56,7 +56,11 @@ const mutations = {
 }
 
 const getters = {
-	listAttendance: state => state.attendance
+	listAttendance: state => state.attendance,
+	listEmployee(rootGetters) {
+		return rootGetters["employee/listEmployee"]
+		// return rootGetters['employee/listEmployee']
+	}
 }
 
 export default {

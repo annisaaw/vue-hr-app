@@ -121,9 +121,9 @@ new Vue({
   router,
   store,
   created() {
+    this.$store.dispatch('employee/fetchEmployee')
     this.$store.dispatch('attendance/fetchAttendance')
     this.$store.dispatch('attendance/attendanceTime')
-    this.$store.dispatch('employee/fetchEmployee')
   },
   render: h => h(App)
 }).$mount('#app')
