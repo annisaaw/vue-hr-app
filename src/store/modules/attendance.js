@@ -11,8 +11,8 @@ const actions = {
 		let res = await axios.get('http://localhost:3000/attendance');
 		commit('ATTENDACE', res.data)
 	},
-	async attendanceTime({state, dispatch, rootState, getters }) {
-		console.log(getters.listEmployee, 'root');
+	async attendanceTime({state, dispatch, rootState, rootGetters }) {
+		// console.log(rootGetters['employee/listEmployee'], 'emp');
 		await dispatch('fetchAttendance')
 		let items = [];
 		let d = new Date();
@@ -21,8 +21,7 @@ const actions = {
 		const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
 		const dt = da+'-'+mo+'-'+ye;
 		let last_id = state.attendance.length>0 ? (state.attendance[state.attendance.length-1].id) : 0;
-
-		for(let i=0;i<getters.employee.employee.length;i++){
+		for(let i=0;i<rootGetters['employee/listEmployee'].length;i++){
 			let temp = { 
 				"id": rootState.employee.employee[i].id, 
 				"clock_in": "", "clock_out": ""
@@ -37,15 +36,12 @@ const actions = {
 		}
 		if (state.attendance.find( a => a.date === dt )) return;
 		await axios.post('http://localhost:3000/attendance', star);
-		dispatch('fetchAttendance')
 	},
 	syncClockIn({state},payload) {
-		console.log(payload, 'store-in');
 		axios.put('http://localhost:3000/attendance/'+ payload.id, payload.timeIn )
 		state
 	},
 	syncClockOut({state}, payload){
-		console.log(payload, 'store out');
 		axios.put('http://localhost:3000/attendance/'+ payload.id, payload.timeOut )
 		state
 	}
@@ -57,10 +53,6 @@ const mutations = {
 
 const getters = {
 	listAttendance: state => state.attendance,
-	listEmployee(rootGetters) {
-		return rootGetters["employee/listEmployee"]
-		// return rootGetters['employee/listEmployee']
-	}
 }
 
 export default {

@@ -6,7 +6,7 @@
 			<div class="w-full text-center overflow-y-auto max-h-75" >
 				<div class="flex border-gray-200 border-b-none flex-wrap">
 					<div class="flex justify rounded" v-for="(item, idx) in menu" :key="idx" @click="activeIdx=idx">
-						<a href="#" class="bg-white hover:bg-gray-100 p-5 text-md text-black mr-1" :class="{ 'bg-gray-300' : activeIdx === idx }">{{ item.name }}</a>
+						<a href="#" class="bg-white hover:bg-gray-300 p-5 text-md text-black mr-1" :class="{ 'bg-gray-300' : activeIdx === idx }">{{ item.name }}</a>
 					</div>
 				</div>
 			</div>
@@ -122,7 +122,6 @@ export default {
 		}
 	},
 	async created() {
-		// await this.fetchAttendanceTime();
 		await this.fetchAttendance();
 	},
   props: [

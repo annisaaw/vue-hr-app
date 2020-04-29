@@ -123,7 +123,6 @@ new Vue({
   created() {
     this.$store.dispatch('employee/fetchEmployee')
     this.$store.dispatch('attendance/fetchAttendance')
-    this.$store.dispatch('attendance/attendanceTime')
   },
   render: h => h(App)
 }).$mount('#app')
