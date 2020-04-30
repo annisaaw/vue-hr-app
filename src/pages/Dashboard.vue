@@ -32,14 +32,16 @@
             </div>
           </template>
         </app-card-mini>
+        <!--start: today's present -->
         <app-card-mini>
           <template v-slot:titleCard>Today's Present</template>
           <template v-slot:contentCard>
             <div class="m-1 flex items-center justify-center">
-              <p class="present">0</p><span class="text-gray-400">/ {{ totalEmp() }}</span>
+              <p class="present">{{ todayPresent }}</p><span class="text-gray-400">/ {{ totalEmp() }}</span>
             </div>
           </template>
         </app-card-mini>
+        <!-- end: today's present -->
       </div>
 
       <div class="flex">
@@ -78,10 +80,10 @@
               <div class="w-full flex justify-around bg-gray-400">
                 <button 
                   class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
-                  @click="clockIn()" :class="!hasClockIn ? 'bg-green-500':'bg-grey-300'">Clock In</button>
+                  @click.once="clockIn()" :class="!hasClockIn ? 'bg-green-500':'bg-grey-300'">Clock In</button>
                 <button 
                 class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
-                @click="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
+                @click.once="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
               </div>
             </div>
             <!-- end: attendance button -->
@@ -178,7 +180,6 @@ export default {
     attend(idx) { 
       let today = new Date();
       let time = today.getHours() + ':' + today.getMinutes();
-      console.log(this.getSelfAttd);
       return idx ? (this.clockOut = time) : (this.clockIn = time);
     },
     addZero(x) {
@@ -195,7 +196,7 @@ export default {
 			return this.intlDateTimeFormat[0]+'-'+this.intlDateTimeFormat[1]+'-'+this.intlDateTimeFormat[2];
     },
     clockIn() {
-      if (!this.getSelfAttd.clock_in) {
+      if (!this.getSelfAttd.clock_in && !this.getSelfAttd.clock_out) {
         let box = [];
         let today = this.getTodayId.data;
         today.forEach(ob => {
@@ -214,12 +215,13 @@ export default {
           }
         }
         this.hasClockIn = this.getTimeNow();
-        console.log(cup, 'HAHA');
+        console.log(cup, 'clock-in');
+        this.todayPresent++;
         this.syncClockIn(cup);
       }
     },
     clockOut() {
-      if (!this.getSelfAttd.clock_out) {
+      if (!this.getSelfAttd.clock_out || this.getSelfAttd.clock_in) {
         let box = [];
         let today = this.getTodayId.data;
         today.forEach(ob => {
@@ -238,7 +240,7 @@ export default {
           }
         }
         this.hasClockOut = this.getTimeNow();
-        console.log(cup, 'HAHA');
+        console.log(cup, 'clock-out');
         this.syncClockOut(cup)
       }
     },
@@ -266,7 +268,7 @@ export default {
     },
     getTodayId() {
       return this.listAttendance.find(a=>a.date === this.dateLegalFormat())
-    },
+    }
   },
   watch: {
     listAttendance() {
@@ -280,12 +282,14 @@ export default {
 		await this.fetchAttendanceTime();
     this.hasClockIn = this.getSelfAttd.clock_in ? this.getSelfAttd.clock_in : false;
     this.hasClockOut = this.getSelfAttd.clock_out ? this.getSelfAttd.clock_out : false;
+    this.todayPresent = this.getTodayId.data.filter(a => a.clock_in != "").length
   },
   data: () => ({
     hasClockIn: false,
     hasClockOut: false,
     dataReady: false,
     activeIdx: -1,
+    todayPresent: 0,
     attendance: {
       type: [
         'Clock In',
