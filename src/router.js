@@ -67,6 +67,11 @@ const router = new Router({
         path: '/login',
         name: 'login',
         component: () => import('./pages/Login.vue')
+      },
+      {
+        path: '/lostpassword',
+        name: 'lostpassword',
+        component: () => import('./pages/LostPassword.vue')
       }
     //   {
     //     path: '/login',

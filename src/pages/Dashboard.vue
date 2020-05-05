@@ -215,6 +215,7 @@ export default {
           }
         }
         this.hasClockIn = this.getTimeNow();
+        this.$router.push('attendance');
         console.log(cup, 'clock-in');
         this.todayPresent++;
         this.syncClockIn(cup);
