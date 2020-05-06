@@ -34,6 +34,7 @@ const actions = {
 			"date": dt,
 			"data": items
 		}
+		// console.log(star, 'star');
 		if (state.attendance.find( a => a.date === dt )) return;
 		await axios.post('http://localhost:3000/attendance', star);
 	},

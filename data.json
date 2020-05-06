@@ -132,6 +132,38 @@
       "Division": "Research and Development",
       "status": "Permanent",
       "password": "kompas"
+    },
+    {
+      "id": 27,
+      "name": "Annelisa Friske",
+      "email": "annelise@mail.com",
+      "gender": "female",
+      "image": "",
+      "birthdate": "1994-03-12",
+      "birthplace": "Solo",
+      "phone": "08131323231",
+      "job_id": 82,
+      "status_id": 42,
+      "position": "Devops",
+      "Division": "Engineering",
+      "status": "Contract",
+      "password": "kompas"
+    },
+    {
+      "id": 28,
+      "name": "Friske Amalia",
+      "email": "friske@mail.com",
+      "gender": "female",
+      "image": "",
+      "birthdate": "1993-09-15",
+      "birthplace": "Magelang",
+      "phone": "083231323",
+      "job_id": 83,
+      "status_id": 43,
+      "position": "Frontend Developer",
+      "Division": "Engineering",
+      "status": "Probation",
+      "password": "kompas"
     }
   ],
   "employee_status": [
@@ -860,6 +892,83 @@
         }
       ],
       "id": 14
+    },
+    {
+      "date": "05-05-2020",
+      "data": [
+        {
+          "id": 21,
+          "clock_in": "08:16:17",
+          "clock_out": "08:16:28"
+        },
+        {
+          "id": 22,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 23,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 24,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 25,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 26,
+          "clock_in": "",
+          "clock_out": ""
+        }
+      ],
+      "id": 15
+    },
+    {
+      "date": "06-05-2020",
+      "data": [
+        {
+          "id": 21,
+          "clock_in": "21:03:34",
+          "clock_out": "21:03:43"
+        },
+        {
+          "id": 22,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 23,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 24,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 25,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 26,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 27,
+          "clock_in": "19:12:55",
+          "clock_out": "19:13:02"
+        }
+      ],
+      "id": 16
     }
   ]
 }

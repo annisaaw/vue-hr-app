@@ -172,7 +172,8 @@ export default {
 					status_id: parseInt(this.status_id),
 					position: '',
 					Division: '',
-					status: ''
+					status: '',
+					password: 'kompas'
 				}	
 
 				if(this.name != '' && this.email != '' && this.birthdate != '' && this.job_id != '' && this.status_id != '') {

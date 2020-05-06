@@ -77,13 +77,13 @@
             </div>
             <!-- start: attendance button -->
             <div class="w-full flex mt-1">
-              <div class="w-full flex justify-around bg-gray-400">
+              <div class="w-full flex justify-around bg-gray-400" v-if="getSelfAttd">
                 <button 
                   class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
                   @click.once="clockIn()" :class="!hasClockIn ? 'bg-green-500':'bg-grey-300'">Clock In</button>
                 <button 
-                class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
-                @click.once="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
+                  class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
+                  @click.once="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
               </div>
             </div>
             <!-- end: attendance button -->
@@ -108,6 +108,9 @@
                   <td class="border-b w-2/5"> {{ checkClock(hasClockOut) }} </td>
                 </tr>
               </table>
+              <div v-if="!getSelfAttd">
+                <p class="text-center mt-2 bg-yellow-500">Start tommorow for attendance</p>
+              </div>
             </div>
           </div>
         </div>
@@ -280,12 +283,14 @@ export default {
     await this.fetchEmployee();
     await this.fetchEvent();
     await this.fetchApplicant();
-		await this.fetchAttendanceTime();
+    await this.fetchAttendanceTime();
+    if (!this.getSelfAttd) return
     this.hasClockIn = this.getSelfAttd.clock_in ? this.getSelfAttd.clock_in : false;
     this.hasClockOut = this.getSelfAttd.clock_out ? this.getSelfAttd.clock_out : false;
     this.todayPresent = this.getTodayId.data.filter(a => a.clock_in != "").length
   },
   data: () => ({
+    newEmployee: false,
     hasClockIn: false,
     hasClockOut: false,
     dataReady: false,

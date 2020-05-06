@@ -39,14 +39,15 @@ export default {
     return {
       email: '',
       phone: '',
-      birthdate: '',
+      birthdate: '02/08/1993',
       password: '',
       error: false
     }
   },
   methods: {
     getPassword() {
-      let getPass = this.list.find(a=>a.email === this.email && a.phone === this.phone).password;
+      let date = this.birthdate.replace(/-/g, '/').split("/").reverse().join("/");
+      let getPass = this.list.find(a=>a.email === this.email && a.phone === this.phone && a.birthdate === date).password;
       return getPass ? this.password = getPass : this.error = true;
     },
     loginPage() {

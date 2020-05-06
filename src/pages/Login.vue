@@ -12,7 +12,7 @@
           </div>
           <div class="flex items-center justify-around">
             <button class="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-4 rounded focus:outline-none" type="submit">Sign In</button>
-            <router-link to='lostpassword' class="hover:bg-orange-400 text-white font-bold py-2 px-4 rounded focus:outline-none">Forgot Password</router-link>
+            <router-link :to="{name:'lostpassword'}" class="hover:bg-orange-400 text-white font-bold py-2 px-4 rounded focus:outline-none">Forgot Password</router-link>
           </div>
         </form>
     </div>
