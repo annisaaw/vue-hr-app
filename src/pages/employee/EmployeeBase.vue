@@ -7,7 +7,7 @@
 			<div>
 				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV</a>
 				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV (All)</a>
-			<router-link :to="{ name: 'add'}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Add New Employee</router-link>
+			<router-link :to="{ name: 'add'}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1" v-if="isAdmin">Add New Employee</router-link>
 			</div>
       </div>
 			
@@ -99,17 +99,19 @@ export default {
 			if (this.activeIndex === 1) stat = 'Contract'
 			if (this.activeIndex === 2) stat = 'Probation'
 			return this.name ? employee.filter(a => a.status === stat && a.name.toLowerCase().includes(this.name.toLowerCase())) : employee.filter(a => a.status === stat)
-	},
+		},
 		search() {
 			return this.name
 		}
   },
   async created() {
-    await this.fetchStatus();
+		await this.fetchStatus();
+		this.isAdmin = this.$cookies.get('user_role') === 'admin' ? true : false; 
   },
   data: () => ({
 		activeIndex: 0,
-		name: ''
+		name: '',
+		isAdmin: false
   }),
   props: [
     "icon"

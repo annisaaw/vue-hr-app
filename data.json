@@ -51,7 +51,8 @@
       "Division": "Research and Development",
       "status_id": 43,
       "status": "Probation",
-      "password": "kompas"
+      "password": "admin",
+      "role": "admin"
     },
     {
       "id": 22,
@@ -67,7 +68,8 @@
       "Division": "Engineering",
       "status_id": 43,
       "status": "Probation",
-      "password": "kompas"
+      "password": "kompas",
+      "role": "user"
     },
     {
       "id": 23,
@@ -83,7 +85,8 @@
       "Division": "Engineering",
       "status_id": 42,
       "status": "Contract",
-      "password": "kompas"
+      "password": "kompas",
+      "role": "user"
     },
     {
       "id": 24,
@@ -99,7 +102,8 @@
       "position": "Manager",
       "Division": "Research and Development",
       "status": "Permanent",
-      "password": "kompas"
+      "password": "kompas",
+      "role": "user"
     },
     {
       "id": 25,
@@ -115,7 +119,8 @@
       "position": "Devops",
       "Division": "Engineering",
       "status": "Permanent",
-      "password": "kompas"
+      "password": "kompas",
+      "role": "user"
     },
     {
       "id": 26,
@@ -131,7 +136,8 @@
       "position": "Manager",
       "Division": "Research and Development",
       "status": "Permanent",
-      "password": "kompas"
+      "password": "kompas",
+      "role": "user"
     },
     {
       "id": 27,
@@ -147,7 +153,8 @@
       "position": "Devops",
       "Division": "Engineering",
       "status": "Contract",
-      "password": "kompas"
+      "password": "kompas",
+      "role": "user"
     },
     {
       "id": 28,
@@ -163,7 +170,25 @@
       "position": "Frontend Developer",
       "Division": "Engineering",
       "status": "Probation",
-      "password": "kompas"
+      "password": "kompas",
+      "role": "user"
+    },
+    {
+      "id": 29,
+      "name": "Aigan",
+      "email": "aigan@mail.com",
+      "gender": "male",
+      "image": "",
+      "birthdate": "1998-03-04",
+      "birthplace": "Jakarta",
+      "phone": "01239238192",
+      "job_id": 81,
+      "status_id": 42,
+      "position": "Manager",
+      "Division": "Research and Development",
+      "status": "Contract",
+      "password": "kompas",
+      "role": "user"
     }
   ],
   "employee_status": [
@@ -969,6 +994,52 @@
         }
       ],
       "id": 16
+    },
+    {
+      "date": "07-05-2020",
+      "data": [
+        {
+          "id": 21,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 22,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 23,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 24,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 25,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 26,
+          "clock_in": "",
+          "clock_out": ""
+        },
+        {
+          "id": 27,
+          "clock_in": "06:48:14",
+          "clock_out": "08:52:10"
+        },
+        {
+          "id": 28,
+          "clock_in": "06:48:37",
+          "clock_out": "06:48:43"
+        }
+      ],
+      "id": 17
     }
   ]
 }

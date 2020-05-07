@@ -38,7 +38,9 @@ export default {
 				return
       }
 
-      this.$cookies.set('user_login',this.emp[getUser].id,'23h');
+      this.$cookies.set('user_login',this.emp[getUser].id,'23h')
+                   .set('user_role', this.emp[getUser].role, '23h');
+                   
 			this.$router.push({ name: 'dashboard' });
         }
     },

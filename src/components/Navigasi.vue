@@ -91,6 +91,7 @@ export default {
 			emp: 'employee/listEmployee'
 		}),
 		isLoggedIn(){
+			if (!this.emp) return;
 			let tar = this.$cookies.get('user_login');
 			return tar ? this.emp.find(a=>a.id == tar).name.split(" ")[0] : '';
 		},
@@ -99,7 +100,7 @@ export default {
 		}
 	},
 	async created() {
-		this.fetchLeaveRequest()
+    this.fetchLeaveRequest()
 	}
 }
 </script>
