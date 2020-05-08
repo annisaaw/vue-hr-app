@@ -13,12 +13,9 @@ import LeaveBase from './pages/leave_request/LeaveBase'
 import LeaveAdd from './pages/leave_request/LeaveAdd'
 import Attendance from './pages/attendance/Attendance'
 import AttendanceBase from './pages/attendance/AttendanceBase'
-<<<<<<< HEAD
 import Event from './pages/event/Event'
 import EventAdd from './pages/event/EventAdd'
 import EventEdit from './pages/event/EventEdit'
-=======
->>>>>>> 10c42c39ab75b693936e5b575dc3afe78f526246
 
 Vue.use(Router);
 
@@ -75,18 +72,17 @@ const router = new Router({
         component: () => import('./pages/Login.vue')
       },
       {
-<<<<<<< HEAD
         path: '/event',
         component: Event,
         children: [
           { path: 'add_event', component: EventAdd, name: 'add_event' },
           { path: ':id/edit_event', component: EventEdit, name: 'edit_event' }
         ]
-=======
+      },
+      {
         path: '/lostpassword',
         name: 'lostpassword',
         component: () => import('./pages/LostPassword.vue')
->>>>>>> 10c42c39ab75b693936e5b575dc3afe78f526246
       }
     //   {
     //     path: '/login',
