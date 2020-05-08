@@ -111,9 +111,6 @@ library.add(
   faYoutubeSquare
 )
 
-
-library.add(faUserSecret)
-
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
@@ -123,5 +120,9 @@ Vue.use(VueCookies);
 new Vue({
   router,
   store,
+  created() {
+    this.$store.dispatch('employee/fetchEmployee')
+    this.$store.dispatch('attendance/fetchAttendance')
+  },
   render: h => h(App)
 }).$mount('#app')

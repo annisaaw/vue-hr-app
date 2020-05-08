@@ -9,8 +9,9 @@
 			<div class="w-1/2 pr-0">
 				<div class="flex relative inline-block float-right">
 					<div class="relative text-sm text-gray-100">
-						<button id="userButton" class="flex items-center focus:outline-none mr-3"  @click="show = !show">
-							<img class="w-8 h-8 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of User"> <span class="hidden md:inline-block text-gray-100">Hi, {{isLoggedIn}}</span>
+						<button id="userButton" class="flex items-center focus:outline-none mr-3" @click="show = !show">
+							<img class="w-8 h-8 rounded-full mr-4" :src="isLoggedInAvatar"
+							alt="Avatar of User"> <span class="hidden md:inline-block text-gray-100">Hi, {{isLoggedIn}}</span>
 							<span class="px-1" ><font-awesome-icon :icon="['fa', 'angle-down']" /></span>
 						</button>
 						<div id="userMenu" class="bg-gray-900 rounded shadow-md mt-2 absolute mt-12 top-0 right-0 min-w-full overflow-auto z-30" :class="{ invisible: !show }">
@@ -79,21 +80,27 @@ export default {
 		sumLeaveRequest() {
 			return this.leave_list.length
 		},
-        logOut(){
-          this.$cookies.remove('user_login');
-          this.$router.push({ name: 'login' });
-        }
+		logOut(){
+			this.$cookies.remove('user_login');
+			this.$router.push({ name: 'login' });
+		}
 	},
 	computed: {
 		...mapGetters({
-			leave_list: 'leaveRequest/listRequest'
+			leave_list: 'leaveRequest/listRequest',
+			emp: 'employee/listEmployee'
 		}),
-        isLoggedIn(){
-            return this.$cookies.get('user_login') ? this.$cookies.get('user_login') : '';
-        }
+		isLoggedIn(){
+			if (!this.emp) return;
+			let tar = this.$cookies.get('user_login');
+			return tar ? this.emp.find(a=>a.id == tar).name.split(" ")[0] : '';
+		},
+		isLoggedInAvatar() {
+			return this.emp.find(a => a.name === this.isLoggedIn) ? this.emp.find(a => a.name === this.isLoggedIn).image : 'http://i.pravatar.cc/300';
+		}
 	},
 	async created() {
-		this.fetchLeaveRequest()
+    this.fetchLeaveRequest()
 	}
 }
 </script>
