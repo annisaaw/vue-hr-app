@@ -25,7 +25,7 @@ export default {
     data(){
       return{
           email: 'john.doe@mail.com',
-          password: 'kompas',
+          password: 'admin',
           error: false
       }
     },

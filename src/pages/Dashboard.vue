@@ -43,26 +43,34 @@
         </app-card-mini>
         <!-- end: today's present -->
       </div>
-
-      <div class="flex">
+<div class="flex">
+      <div class="flex-col m-4 max-w-4xl md:w-full">
         <div class="max-w-4xl md:w-full shadow bg-gray-100 rounded m-4 border-t-4 border-yellow-500"> 
           <!-- start: upcoming events -->
           <div>
             <div class=" text-center font-bold p-4 rounded-t border-b">
-              <p>Upcoming Events</p>
+              <p>
+                Upcoming Events &emsp;
+                <!-- <button class="bg-yellow-500 hover:bg-yellow-600 hover:text-white py-1 text-sm px-3 rounded m-1"> Add </button> -->
+                <router-link to="/event/add_event" class="bg-yellow-500 hover:bg-yellow-600 py-1 text-sm px-3 rounded m-1" tag="a">Add</router-link>
+              </p>
             </div>
             <div>
               <div class="p-4">
                 <table class="table-auto w-full bg-white border text-sm" v-for="(item, idx) in allEvent" :key="idx">
                   <tr>
-                    <td class="px-2 py-2 border-b">
+                    <td class="px-2 py-2 border-b w-10">
                       <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
                     </td>
-                    <td class="px-4 py-2 border-b">
+                    <td class="px-4 py-2 border-b w-40">
                       <p>{{ item.date }}</p>
                     </td>
                     <td class="py-2 border-b" style="max-width: 3rem">
                       <p>{{ item.desc }}</p>
+                    </td>
+                    <td class="px-2 py-2 border-b w-10">
+                      <router-link :to="{name: 'edit_event', params: { id: item.id}}" class="py-1 text-sm px-3 rounded m-1 hover:text-yellow-600" tag="a"><font-awesome-icon :icon="['fa', 'angle-right']" size="lg" /></router-link>
+                      
                     </td>
                   </tr>
                 </table>
@@ -70,54 +78,52 @@
             </div>
           </div>
           <!-- end: upcoming events -->
-
-          <div>
-            <div class=" text-center font-bold p-4 rounded-t border-b">
-              <p>Attendance</p>
-            </div>
-            <!-- start: attendance button -->
-            <div class="w-full flex mt-1">
-              <div class="w-full flex justify-around bg-gray-400" v-if="getSelfAttd">
-                <button 
-                  class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
-                  @click.once="clockIn()" :class="!hasClockIn ? 'bg-green-500':'bg-grey-300'">Clock In</button>
-                <button 
-                  class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
-                  @click.once="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
-              </div>
-            </div>
-            <!-- end: attendance button -->
-            <div class="p-2">
-              <table class="table-auto w-full bg-white border text-sm">
-                <tr class="w-full text-center">
-                  <td class="w-1/5">
-                    <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
-                  </td>
-                  <td class="border-b w-2/5">
-                    <p>Masuk Time</p>
-                  </td>
-                  <td class="border-b w-2/5" style="max-width: 3rem">
-                    <p>Keluar Time</p>
-                  </td>
-                  <td class="px-2 py-2 border-b">
-                    <router-link :to="{name: 'edit_event', params: { id: item.id}}" tag="a" class="hover:text-yellow-500"><font-awesome-icon :icon="['fa', 'angle-right']" size="lg" /></router-link>
-                  </td>
-                </tr>
-                <tr class="w-full text-center">
-                  <td class="w-1/5">
-                    <font-awesome-icon :icon="['far', 'clock']" />
-                  </td>
-                  <td class="border-b w-2/5">{{ checkClock(hasClockIn) }}</td>
-                  <td class="border-b w-2/5"> {{ checkClock(hasClockOut) }} </td>
-                </tr>
-              </table>
-              <div v-if="!getSelfAttd">
-                <p class="text-center mt-2 bg-yellow-500">Start tommorow for attendance</p>
-              </div>
-            </div>
-          </div>
         </div>
-
+    <div class="max-w-4xl md:w-full shadow bg-gray-100 rounded m-4 border-t-4 border-yellow-500">
+      <div class=" text-center font-bold p-4 rounded-t border-b">
+        <p>Attendance</p>
+      </div>
+      <!-- start: attendance button -->
+      <div class="w-full flex mt-1">
+        <div class="w-full flex justify-around bg-gray-400" v-if="getSelfAttd">
+        <button 
+          class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
+          @click.once="clockIn()" :class="!hasClockIn ? 'bg-green-500':'bg-grey-300'">Clock In</button>
+        <button 
+          class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
+          @click.once="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
+        </div>
+      </div>
+      <!-- end: attendance button -->
+      <div class="p-2">
+        <table class="table-auto w-full bg-white border text-sm">
+        <tr class="w-full text-center">
+          <td class="w-1/5">
+          <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
+          </td>
+          <td class="border-b w-2/5">
+          <p>Masuk Time</p>
+          </td>
+          <td class="border-b w-2/5" style="max-width: 3rem">
+          <p>Keluar Time</p>
+          </td>
+        </tr>
+        <tr class="w-full text-center">
+          <td class="w-1/5">
+          <font-awesome-icon :icon="['far', 'clock']" />
+          </td>
+          <td class="border-b w-2/5">{{ checkClock(hasClockIn) }}</td>
+          <td class="border-b w-2/5"> {{ checkClock(hasClockOut) }} </td>
+        </tr>
+        </table>
+        <div v-if="!getSelfAttd">
+        <p class="text-center mt-2 bg-yellow-500">Start tommorow for attendance</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <div class="flex  m-4 max-w-4xl md:w-full">
         <app-card-medium>
           <template v-slot:titleCard>New Applicants</template>
           <template v-slot:contentCard>
@@ -142,6 +148,7 @@
           </template>
         </app-card-medium>
       </div>
+    </div>
     </div>
   </app-back>
   
@@ -169,7 +176,7 @@ export default {
       fetchApplicant: 'applicant/fetchApplicant',
       syncClockIn: 'attendance/syncClockIn',
       syncClockOut: 'attendance/syncClockOut',
-			fetchAttendanceTime: 'attendance/attendanceTime'
+      fetchAttendanceTime: 'attendance/attendanceTime'
     }), 
     totalEmp() {
       return this.allEmployee.length
@@ -199,7 +206,7 @@ export default {
       return h + ":" + m + ":" + s;
     },
     dateLegalFormat() {
-			return this.intlDateTimeFormat[0]+'-'+this.intlDateTimeFormat[1]+'-'+this.intlDateTimeFormat[2];
+      return this.intlDateTimeFormat[0]+'-'+this.intlDateTimeFormat[1]+'-'+this.intlDateTimeFormat[2];
     },
     clockIn() {
       if (!this.getSelfAttd.clock_in && !this.getSelfAttd.clock_out) {
@@ -260,15 +267,15 @@ export default {
       allEmployee: 'employee/listEmployee',
       allEvent: 'event/listEvent',
       allApplicant: 'applicant/listApplicant',
-			listAttendance: 'attendance/listAttendance'
+      listAttendance: 'attendance/listAttendance'
     }),
     intlDateTimeFormat(){
-			let d = new Date();
-			return [
-				new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d),
-				new Intl.DateTimeFormat('en', { month: '2-digit' }).format(d),
-				new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
-			]
+      let d = new Date();
+      return [
+        new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d),
+        new Intl.DateTimeFormat('en', { month: '2-digit' }).format(d),
+        new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
+      ]
     },
     getSelfAttd(){
       return this.listAttendance.find(a=>a.date === this.dateLegalFormat()) ? this.listAttendance.find(a=>a.date === this.dateLegalFormat()).data.find(b=>b.id == this.$cookies.get('user_login')) : '';
