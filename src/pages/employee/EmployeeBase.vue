@@ -4,9 +4,25 @@
       <app-nav></app-nav>
       <div class="container px-8 mx-auto  flex mt-6 flex m-5 justify-between items-center">
 			<h1 class="text-3xl text-white">Employee List</h1>
-			<div>
-				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV</a>
-				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV (All)</a>
+			<div class="flex">
+				<!-- <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV</a> -->
+				<download-csv
+					class   = "bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1"
+					:data   = "filterEmployee(employee)"
+					name    = "employee.csv">
+				
+					Export to CSV
+				
+				</download-csv>
+				<!-- <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export to CSV (All)</a> -->
+				<download-csv
+					class   = "bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1"
+					:data   = "employee"
+					name    = "employee_all.csv">
+				
+					Export to CSV (All)
+				
+				</download-csv>
 			<router-link :to="{ name: 'add'}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1" v-if="isAdmin">Add New Employee</router-link>
 			</div>
       </div>
@@ -111,7 +127,29 @@ export default {
   data: () => ({
 		activeIndex: 0,
 		name: '',
-		isAdmin: false
+		isAdmin: false,
+		json_data: [
+        {
+            'name': 'Tony Peña',
+            'city': 'New York',
+            'country': 'United States',
+            'birthdate': '1978-03-15',
+            'phone': {
+                'mobile': '1-541-754-3010',
+                'landline': '(541) 754-3010'
+            }
+        },
+        {
+            'name': 'Thessaloniki',
+            'city': 'Athens',
+            'country': 'Greece',
+            'birthdate': '1987-11-23',
+            'phone': {
+                'mobile': '+1 855 275 5071',
+                'landline': '(2741) 2621-244'
+            }
+        }
+    ]
   }),
   props: [
     "icon"
