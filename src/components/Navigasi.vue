@@ -66,7 +66,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
 export default {
 	data(){
 		return {
@@ -92,8 +91,8 @@ export default {
 		}),
 		isLoggedIn(){
 			if (!this.emp) return;
-			let tar = this.$cookies.get('user_login');
-			return tar ? this.emp.find(a=>a.id == tar).name.split(" ")[0] : '';
+			let userId = this.$cookies.get('user_login');
+			return userId ? this.emp.find(a=>a.id == userId).name.split(" ")[0] : '';
 		},
 		isLoggedInAvatar() {
 			let userId = this.$cookies.get('user_login');

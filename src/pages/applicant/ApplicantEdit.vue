@@ -8,12 +8,11 @@
 					<div class="items-center my-3">
 						<button class="btn btn-lg mr-4 px-6 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" @click.prevent="saveEdited()">Save</button>
 						<router-link :to="{name: 'applicants'}" class="btn btn-lg px-4 py-3 bg-blue-700 hover:bg-blue-500 text-white rounded-md router-link-active">Cancel</router-link>
-						<button class="btn btn-lg ml-4 px-6 py-2 bg-red-400 hover:bg-red-500 text-white rounded-md" @click.prevent="deleteEmp()">Delete</button>
 					</div>
 				</div>
 				<div class="flex bg-gray-200 rounded-lg">
 					<div class="w-2/5">
-					<!-- Profile  -->
+						<!-- Profile  -->
 						<div class="shadow">
 							<h1 class=" text-black text-xl py-3 text-center font-bold">Profile</h1>
 							<div class="min-w-full rounded-b  px-10 pt-5 border-t border-solid">
@@ -21,43 +20,44 @@
 									<div class="w-full mx-auto">
 										<div class="mb-3">
 											<p class="text-gray-600">Name</p>
-											<input type="text" name="name" placeholder="" required="required" v-model="name" class=" focus:outline-none focus:shadow-outline border rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+											<input type="text" name="name" placeholder="" required="required" v-model="name" class=" focus:outline-none focus:shadow-outline border  rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 										</div>
 										<div class="w-full mb-3">
-										<p class="text-gray-600">Email</p>
-										<input type="email" name="email" placeholder="" required="required" v-model="email" class=" focus:outline-none focus:shadow-outline border rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
-									</div>
-									<div class="w-full mb-3">
-										<p class="text-gray-600">Phone Number</p>
-										<input type="number" name="phone-number" placeholder="(021) - XXX" required="required" v-model="phone" class=" focus:outline-none focus:shadow-outline border  rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
-									</div>
-									<div class="w-full mb-3">
-										<p class="text-gray-600">Gender</p>
-										<label for="gender" class="mx-3">
-											<input type="radio" name="gender" value="male" v-model="gender">
-											<span class="ml-2">Male</span>
-										</label>
-										<label for="gender" class="mx-3">
-											<input type="radio" name="gender" value="female" v-model="gender" checked>
-											<span class="ml-2">Female</span>
-										</label>
-									</div>
-									<div class="w-full mb-3">
-										<p class="text-gray-600">Birth date</p>
-										<input type="date" name="birthdate" v-model="birthdate" class=" focus:outline-none focus:shadow-outline border  rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
-									</div>
-									<div class="w-full mb-3">
-										<p class="text-gray-600">Birth Place</p>
-										<input type="text" name="birthplace" v-model="birthplace" class=" focus:outline-none focus:shadow-outline border  rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Bidan">
+											<p class="text-gray-600">Email</p>
+											<input type="email" name="email" placeholder="" required="required" v-model="email" class=" focus:outline-none focus:shadow-outline border rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+										</div>
+										<div class="w-full mb-3">
+											<p class="text-gray-600">Phone Number</p>
+											<input type="number" name="phone-number" placeholder="(021) - XXX" required="required" v-model="phone" class=" focus:outline-none focus:shadow-outline border  rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+										</div>
+										<div class="w-full mb-3">
+											<p class="text-gray-600">Gender</p>
+											<label for="gender" class="mx-3">
+												<input type="radio" name="gender" value="male" v-model="gender">
+												<span class="ml-2">Male</span>
+											</label>
+											<label for="gender" class="mx-3">
+												<input type="radio" name="gender" value="female" v-model="gender" checked>
+												<span class="ml-2">Female</span>
+											</label>
+										</div>
+										<div class="w-full mb-3">
+											<p class="text-gray-600">Birth date</p>
+											<input type="date" name="birthdate" v-model="birthdate" class=" focus:outline-none focus:shadow-outline border  rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+										</div>
+										<div class="w-full mb-3">
+											<p class="text-gray-600">Birth Place</p>
+											<input type="text" name="birthplace" v-model="birthplace" class=" focus:outline-none focus:shadow-outline border  rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Bidan">
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<!-- Profile End -->
 					</div>
-					<!-- Profile End -->
-							
-					<!-- Occupation -->
-					<div class="w-2/5">
+
+          <!-- Occupation -->
+          <div class="w-2/5">
 						<div class="shadow">
 							<h1 class=" text-black bolder font-bold text-xl py-3 text-center">Occupation</h1>
 							<div class="rounded-b  px-10 pt-5 border-t border-solid flex justify-center">
@@ -89,10 +89,16 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- Occupation End -->
-							
-					</div>
+						<!-- Occupation End -->
+          </div>
+          <div class="w-1/5">
+            <div class="w-full">
+              <div class="ml-3 mt-4 ">
+                <div class="bg-cover w-3/5 bg-center" style="height: 160px; width: 160px" :style="{ 'background-image': 'url(' + (this.image ? this.image : 'https://api.adorable.io/avatars/285/abott@adorable.png') + ')' }"></div>
+                <input type="file" accept="image/*" ref="file" @change="handleFileUpload($event)" class="mt-4 w-40">
+              </div>
+            </div>
+          </div>
 				</div>
 			</form>
 		</div>
@@ -110,7 +116,6 @@ export default {
 	},
 	data() {
 		return {
-			activeIndex: 0,
 			menu: [
 				{'name': 'Profile'},
 				{'name': 'Occupation'}
@@ -159,7 +164,7 @@ export default {
 		},
 		saveEdited() {
 			let jobs = this.allJob;
-			let stat = this.allStatus;
+			let stat = this.listAppStatus;
 			let new_employee = {
 				id: this.id,
 				name: this.name,
@@ -203,7 +208,7 @@ export default {
 		...mapGetters({
 			allApplicant: 'applicant/listApplicant',
 			allJob: 'employee/listJob',
-			allStatus: 'applicant/listAppStatus'
+			listAppStatus: 'applicant/listAppStatus'
 		}),
 		getValue(){
 			let emp = this.allApplicant;

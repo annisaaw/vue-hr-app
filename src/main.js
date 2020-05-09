@@ -4,6 +4,7 @@ import './tailwind.css'
 import router from './router'
 import store from './store/store.js'
 import VueCookies from 'vue-cookies'
+import JsonCSV from 'vue-json-csv'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -116,6 +117,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 Vue.use(VueCookies);
+
+Vue.component('downloadCsv', JsonCSV);
 
 new Vue({
   router,
