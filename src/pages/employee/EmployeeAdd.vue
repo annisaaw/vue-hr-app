@@ -173,7 +173,8 @@ export default {
 					position: '',
 					Division: '',
 					status: '',
-					password: 'kompas'
+					password: 'kompas',
+					role: 'user'
 				}	
 
 				if(this.name != '' && this.email != '' && this.birthdate != '' && this.job_id != '' && this.status_id != '') {

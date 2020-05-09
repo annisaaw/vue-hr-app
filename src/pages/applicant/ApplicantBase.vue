@@ -7,7 +7,7 @@
 			<div>
 				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export CSV</a>
 				<a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Export CSV (All)</a>
-				<router-link :to="{name: 'add_applicant'}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1">Add New Applicant</router-link>
+				<router-link :to="{name: 'add_applicant'}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1" v-if="isEmployer">Add New Applicant</router-link>
 			</div>
       </div>
       <div class="flex flex-col items-center">
@@ -49,7 +49,7 @@
 										<div class="text-sm leading-5 text-gray-500 text-left">{{ item.Division }}</div>
 									</td>
 									<td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
-									<td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+									<td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium" v-if="isEmployer">
 										<router-link :to="{name: 'edit_applicant', params: {id: item.id}}" class="text-gray-600 hover:text-indigo-900 focus:outline-none focus:underline">
 											<svg class="feather feather-chevron-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
 										</router-link>
@@ -85,6 +85,7 @@ export default {
 			{ name: 'Scheduled to Psycho Test' },
 			{ name: 'Scheduled to Interview' }
 		],
+		isEmployer: false,
 	}),
 	methods: {
 		...mapActions({
@@ -111,6 +112,7 @@ export default {
 	},
 	async created() {
 		await this.fetchApplicant();
+		this.isEmployer = this.$cookies.get('user_role') == 'hrd';
 	},
   props: [
     "icon"
