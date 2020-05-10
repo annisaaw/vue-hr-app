@@ -29,6 +29,11 @@ const router = new Router({
         component: () => import('./pages/Dashboard.vue')
       },
       {
+        path: '/apply',
+        name: 'apply',
+        component: () => import('./pages/Apply.vue')
+      },
+      {
         path: '/employees',
         component: Employee,
         children: [ 

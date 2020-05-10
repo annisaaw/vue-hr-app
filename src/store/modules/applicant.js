@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const state = {
 	applicant: [],
-	applicant_status: []
+	applicant_status: [],
+	job: []
 }
 
 const actions = {
@@ -13,6 +14,10 @@ const actions = {
 	async fetchAppStatus({ commit }) {
 		let res = await axios.get('http://localhost:3000/applicant_status')
 		commit('APP_STATUS', res.data)
+	},
+	async fetchJob({ commit }) {
+		let res = await axios.get('http://localhost:3000/job')
+		commit('JOB', res.data)
 	},
 	async addApplicant({commit}, payload) {
 		let res = await axios.post('http://localhost:3000/applicant', payload)
@@ -31,12 +36,14 @@ const actions = {
 const mutations = {
 	APPLICANT: (state, payload) => state.applicant = payload,
 	APP_STATUS: (state, payload) => state.applicant_status = payload,
-	APP_ADDED: (state, payload) => state.applicant.push(payload)
+	APP_ADDED: (state, payload) => state.applicant.push(payload),
+	JOB: (state, payload) => state.job = payload,
 }
 
 const getters = {
 	listApplicant: state => state.applicant,
-	listAppStatus: state => state.applicant_status
+	listAppStatus: state => state.applicant_status,
+	listJob: state => state.job
 }
 
 export default {
