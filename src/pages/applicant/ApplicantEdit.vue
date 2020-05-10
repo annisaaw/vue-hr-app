@@ -8,6 +8,7 @@
 					<div class="items-center my-3">
 						<button class="btn btn-lg mr-4 px-6 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" @click.prevent="saveEdited()">Save</button>
 						<router-link :to="{name: 'applicants'}" class="btn btn-lg px-4 py-3 bg-blue-700 hover:bg-blue-500 text-white rounded-md router-link-active">Cancel</router-link>
+						<button class="btn btn-lg ml-4 px-6 py-2 bg-red-400 hover:bg-red-500 text-white rounded-md" @click.prevent="deleteEmp()">Delete</button>
 					</div>
 				</div>
 				<div class="flex bg-gray-200 rounded-lg">

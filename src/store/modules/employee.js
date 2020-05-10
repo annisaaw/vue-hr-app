@@ -30,6 +30,14 @@ const actions = {
 	removeEmployee({state}, payload) {
 		axios.delete('http://localhost:3000/employee/' + payload)
 		console.log(state)
+	},
+	newEmployee({state, getters}, payload) {
+		
+		payload.id = getters.listEmployee[getters.listEmployee.length-1].id + 1;
+		payload.status_id = 43
+		payload.status = "Probation"
+		axios.post('http://localhost:3000/employee/', payload)
+		state
 	}
 }
 
