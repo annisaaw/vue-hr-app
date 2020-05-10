@@ -91,11 +91,12 @@ export default {
 		}),
 		isLoggedIn(){
 			if (!this.emp) return;
-			let tar = this.$cookies.get('user_login');
-			return tar ? this.emp.find(a=>a.id == tar).name.split(" ")[0] : '';
+			let userId = this.$cookies.get('user_login');
+			return userId ? this.emp.find(a=>a.id == userId).name.split(" ")[0] : '';
 		},
 		isLoggedInAvatar() {
-			return this.emp.find(a => a.name === this.isLoggedIn) ? this.emp.find(a => a.name === this.isLoggedIn).image : 'http://i.pravatar.cc/300';
+			let userId = this.$cookies.get('user_login');
+			return this.emp.find(a => a.id == userId) ? this.emp.find(a=>a.id==userId).image : 'http://i.pravatar.cc/300';
 		}
 	},
 	async created() {
