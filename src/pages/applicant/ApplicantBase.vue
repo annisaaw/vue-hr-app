@@ -125,7 +125,6 @@ export default {
 		approved(x) {
 			if (!confirm('Are you sure? this person will be new employee')) return
 			let applies = this.allApplicant.find(ob=>ob.name === x);
-			// applies.status_id = 43
 			this.$store.dispatch('applicant/removeApplicant', applies.id)
 			this.$store.dispatch('employee/newEmployee', applies)
 		}

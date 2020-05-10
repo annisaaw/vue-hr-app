@@ -36,6 +36,9 @@ const actions = {
 		payload.id = getters.listEmployee[getters.listEmployee.length-1].id + 1;
 		payload.status_id = 43
 		payload.status = "Probation"
+		payload.password = "kompas"
+		payload.role = "user"
+		console.log(payload, 'haha');
 		axios.post('http://localhost:3000/employee/', payload)
 		state
 	}
