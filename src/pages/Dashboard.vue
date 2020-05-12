@@ -22,7 +22,7 @@
           <template v-slot:contentCard>
             <div class="flex justify-center">
               <div class="flex items-center justify-center" v-for="(item, idx) in photoEmp()" :key="idx">
-                <div class="bg-cover bg-center w-12 rounded-full h-12 -ml-5 mt-4" :style="{ 'background-image': 'url(' + item + ')' }"></div>
+                <div class="bg-cover bg-center w-8 rounded-full h-8 -ml-5 mt-4" :style="{ 'background-image': 'url(' + item + ')' }"></div>
               </div>
             </div>
           </template>

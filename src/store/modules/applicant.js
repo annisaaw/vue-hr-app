@@ -16,7 +16,7 @@ const actions = {
 		commit('APP_STATUS', res.data)
 	},
 	async fetchJob({ commit }) {
-		let res = await axios.get('http://localhost:3000/job')
+		let res = await axios.get('http://localhost:3000/available_job')
 		commit('JOB', res.data)
 	},
 	async addApplicant({commit}, payload) {

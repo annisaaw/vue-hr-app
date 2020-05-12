@@ -149,7 +149,7 @@ export default {
 			const last_id = this.listApplicant[this.listApplicant.length-1].id;
 			let jobs = this.allJob;
 			let stat = this.listAppStatus;
-			let new_employee = {
+			let new_applicant = {
 				id: parseInt(last_id + 1),
 				name: this.name,
 				email: this.email,
@@ -167,10 +167,10 @@ export default {
 
 			if(this.name != '' && this.email != '' && this.birthdate != '' && this.job_id != '' && this.status_id != '') {
 				this.saveSuccess = true;
-				new_employee.position = jobs.filter(a => a.id === new_employee.job_id)[0].position
-				new_employee.Division = jobs.filter(a => a.id === new_employee.job_id)[0].Division
-				new_employee.status = stat.filter(a => a.id === new_employee.status_id)[0].status
-				this.addApplicant(new_employee)
+				new_applicant.position = jobs.filter(a => a.id === new_applicant.job_id)[0].position
+				new_applicant.Division = jobs.filter(a => a.id === new_applicant.job_id)[0].Division
+				new_applicant.status = stat.filter(a => a.id === new_applicant.status_id)[0].status
+				this.addApplicant(new_applicant)
 				this.$router.push({ name: 'applicants'})
 			} else {
 				this.saveError = true;

@@ -2,7 +2,7 @@
 	<app-back>
 		<div class="bg-black-alt font-sans leading-normal tracking-normal">
 			<app-nav class="mb-5"></app-nav>
-			<h1 class="text-white text-4xl text-center">Edit Employee</h1>
+			<h1 class="text-white text-4xl text-center">Edit Applicant</h1>
 			<form class="mx-auto px-4">
 				<div class="flex justify-end">
 					<div class="items-center my-3">
@@ -14,7 +14,7 @@
 				<div class="flex bg-gray-200 rounded-lg">
 					<div class="w-2/5">
 						<!-- Profile  -->
-						<div class="shadow">
+						<div class="">
 							<h1 class=" text-black text-xl py-3 text-center font-bold">Profile</h1>
 							<div class="min-w-full rounded-b  px-10 pt-5 border-t border-solid">
 								<div class="flex">
@@ -59,7 +59,7 @@
 
           <!-- Occupation -->
           <div class="w-2/5">
-						<div class="shadow">
+						<div class="">
 							<h1 class=" text-black bolder font-bold text-xl py-3 text-center">Occupation</h1>
 							<div class="rounded-b  px-10 pt-5 border-t border-solid flex justify-center">
 								<div>
@@ -90,8 +90,26 @@
 								</div>
 							</div>
 						</div>
-						<!-- Occupation End -->
+						<div class="">
+							<div class="rounded-b  px-10 pt-5 border-t border-solid flex justify-center">
+								<div>
+									<div class="w-full mb-3">
+										<div class="mr-4">
+											<p class="text-gray-600">CV Applicant</p>
+										</div>
+										<div class="inline-block relative w-64">
+											<div class="bg-cover">
+												<input type="file" accept="application/pdf" ref="file" @change="handleFilePdf($event)" class="mt-4 w-40 mb-8">
+												<div v-if="pdf" @click="viewCv(pdf)" class="text-center w-full bg-green-400 rounded-md cursor-pointer">Preview CV</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
           </div>
+					<!-- end: Occupation -->
           <div class="w-1/5">
             <div class="w-full">
               <div class="ml-3 mt-4 ">
@@ -128,6 +146,7 @@ export default {
 			image: '',
 			birthdate: '02/12/1991',
 			birthplace: '',
+			pdf: '',
 			phone: '',
 			job_id: 0,
 			status_id: 0,
@@ -145,6 +164,12 @@ export default {
 			editApplicant: 'applicant/editApplicant',
 			removeApplicant: 'applicant/removeApplicant'
 		}),
+		viewCv(pdf) {
+			let win = window.open("");
+			win.document.write(
+				"<iframe width='100%' height='100%' src="+pdf+"></iframe>"
+			)
+		},
 		deleteEmp() {
 			if(confirm('Are you sure? data will permanently deleted')){
 				this.removeApplicant(this.id)
@@ -157,6 +182,7 @@ export default {
 			this.email = this.getValue.email
 			this.gender = this.getValue.gender
 			this.image = this.getValue.image
+			this.pdf = this.getValue.pdf ? this.getValue.pdf : ''
 			this.birthdate = this.getValue.birthdate
 			this.birthplace = this.getValue.birthplace
 			this.phone = this.getValue.phone
@@ -172,6 +198,7 @@ export default {
 				email: this.email,
 				gender: this.gender,
 				image: this.image,
+				pdf: this.pdf,
 				birthdate: this.birthdate,
 				birthplace: this.birthplace,
 				phone: this.phone,
@@ -181,7 +208,7 @@ export default {
 				Division: '',
 				status: ''
 			}
-			if(this.name != '' && this.email != '' && this.birthdate != '' && this.job_id != '' && this.status_id != '') {
+			if(this.name != '' && this.email != '' && this.birthdate != '' && this.job_id != '' && this.status_id != '' && this.pdf != '') {
 					this.saveSuccess = true;
 					new_employee.position = jobs.filter(a => a.id === new_employee.job_id)[0].position
 					new_employee.Division = jobs.filter(a => a.id === new_employee.job_id)[0].Division
