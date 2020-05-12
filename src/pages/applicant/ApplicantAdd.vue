@@ -1,4 +1,4 @@
-<template>
+<template> 
 	<app-back>
 		<div class="bg-black-alt font-sans leading-normal tracking-normal">
 			<app-nav class="mb-5"></app-nav>

@@ -1,46 +1,38 @@
-<template>
-	<app-back>
+<template> 
+	<app-back> 
 		<div class="bg-black-alt font-sans leading-normal tracking-normal">
 			<app-nav class="mb-5"></app-nav>
-				<form class="mx-auto pt-20 mt-6 m-5 px-8" action="" method="edit">
-					<div class="flex justify-between">
-						<h1 class="text-white text-2xl">Edit Employee</h1>
-						<div class="items-center my-3">
+				<h1 class="text-white text-4xl text-center">Edit Employee</h1>
+				<form class="mx-auto px-4">
+					<div class="flex justify-end">
+						<div class="items-center my-3 flex justify-around">
 							<button class="btn btn-lg mr-4 px-6 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md" @click.prevent="saveEdited()">Save</button>
-							<router-link :to="{name: 'employees'}" class="btn btn-lg px-4 py-3 bg-blue-700 hover:bg-blue-500 text-white rounded-md router-link-active">Cancel</router-link>
-							<button class="btn btn-lg ml-4 px-6 py-2 bg-red-400 hover:bg-red-500 text-white rounded-md" @click.prevent="deleteEmp()">Delete</button>
+							<router-link :to="{name: 'employees'}" class="btn btn-lg px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white rounded-md router-link-active">Cancel</router-link>
+							<button class="btn btn-lg ml-4 px-6 py-2 bg-red-600 hover:bg-red-500 text-white rounded-md" @click.prevent="deleteEmp()">Delete</button>
 						</div>
 					</div>
-					<div class="flex">
-						<div class="w-1/4">
-							<ul class="bg-white rounded mr-4 ">
-								<div v-for="(item, idx) in menu" :key="idx" @click="activeIndex=idx">
-									<li><a href="#" class="py-2 px-4 block hover:bg-teal-700" :class="{'text-white hover:text-white  bg-teal-500' : activeIndex==idx}">{{item.name}}</a></li>
-								</div>
-							</ul>
-						</div>
-
-						<div class="w-3/4">
-							<!-- Profile  -->
-							<div class="shadow" :class="{ 'hidden' : activeIndex !== 0}">
-								<h1 class="bg-white text-black text-xl bolder p-4">Profile</h1>
-								<div class="min-w-full rounded-b bg-gray-100 px-10 pt-5 border-t border-2 border-solid border-white">
+					<div class="flex bg-gray-200 rounded-lg">
+						<!-- Profile  -->
+						<div class="w-2/5">
+							<div class="">
+								<h1 class=" text-black bolder font-bold text-xl py-3 text-center">Profile</h1>
+								<div class="min-w-full rounded-b px-10 pt-5 border-t border-solid">
 									<div class="flex">
-										<div class="w-2/3">
+										<div class="w-full">
 											<div class="w-full mb-3">
-												<p class="mb-2 text-gray-600">Name</p>
+												<p class="text-gray-600">Name</p>
 												<input type="text" name="name" placeholder="" required="required" v-model="name" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 											</div>
 											<div class="w-full mb-3">
-												<p class="mb-2 text-gray-600">Email</p>
+												<p class="text-gray-600">Email</p>
 												<input type="email" name="email" placeholder="" required="required" v-model="email" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 											</div>
 											<div class="w-full mb-3">
-												<p class="mb-2 text-gray-600">Phone Number</p>
+												<p class="text-gray-600">Phone Number</p>
 												<input type="number" name="phone-number" placeholder="(021) - XXX" required="required" v-model="phone" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 											</div>
 											<div class="w-full mb-3">
-												<p class="mb-2 text-gray-600">Gender</p>
+												<p class="text-gray-600">Gender</p>
 												<label for="gender" class="mx-3">
 													<input type="radio" name="gender" value="male" v-model="gender">
 													<span class="ml-2">Male</span>
@@ -51,33 +43,29 @@
 												</label>
 											</div>
 											<div class="w-full mb-3">
-												<p class="mb-2 text-gray-600">Birth date</p>
+												<p class="text-gray-600">Birth date</p>
 												<input type="date" name="birthdate" v-model="birthdate" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
 											</div>
 											<div class="w-full mb-3">
-												<p class="mb-2 text-gray-600">Birth Place</p>
+												<p class="text-gray-600">Birth Place</p>
 												<input type="text" name="birthplace" v-model="birthplace" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" placeholder="Bidan">
-											</div>
-										</div>
-										<div class="w-1/3">
-											<div class="ml-10 mt-4 ">
-												<div class="bg-cover w-3/5 bg-center" style="height: 160px; width: 160px" :style="{ 'background-image': 'url(' + (this.image) + ')' }"></div>
-												<input type="file" accept="image/*" ref="file" @change="handleFileUpload($event)" class="mt-4 w-40">
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<!-- Profile End -->
+							</div>	
+						</div>
+						<!-- Profile End -->
 							
-							<!-- Occupation -->
-							<div class="shadow" :class="{ 'hidden' : activeIndex !== 1}">
-								<h1 class="bg-white text-black bolder text-xl bolder p-4">Occupation</h1>
-								<div class="min-w-full rounded-b bg-gray-100 px-10 pt-5 border-t border-2 border-solid border-white">
+						<!-- Occupation -->
+						<div class="w-2/5">
+							<div class="">
+								<h1 class=" text-black bolder font-bold text-xl py-3 text-center">Occupation</h1>
+								<div class="min-w-full rounded-b px-10 pt-5 border-t border-solid">
 									<div>
 										<div class="w-full mb-3 flex">
 											<div class="mr-4">
-												<p class="mb-2 text-gray-600">Position</p>
+												<p class="text-gray-600">Position</p>
 												<div class="inline-block relative w-64">
 													<select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" v-model="job_id">
 														<option v-for="(item, idx) in allJob" :value="item.id" :key="idx">{{ item.position }} - {{ item.Division }}</option>
@@ -89,7 +77,7 @@
 											</div>
 										</div>
 										<div class="w-full mb-3">
-											<p class="mb-2 text-gray-600">Employee Status</p>
+											<p class="text-gray-600">Employee Status</p>
 											<div class="inline-block relative w-64">
 												<select class="block appearance-none w-64 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" v-model="status_id">
 													<option v-for="(item, idx) in allStatus" :value="item.id" :key="idx">{{ item.status }}</option>
@@ -102,11 +90,21 @@
 									</div>
 								</div>
 							</div>
-							<!-- Occupation End -->
-							
+						</div>
+						<!-- Occupation End -->
+
+						<div class="w-1/5">
+							<div class="w-full">
+								<div class="ml-3 mt-4 ">
+									<div class="bg-cover w-3/5 bg-center" style="height: 160px; width: 160px" :style="{ 'background-image': 'url(' + (this.image ? this.image : 'https://api.adorable.io/avatars/285/abott@adorable.png') + ')' }"></div>
+									<input type="file" accept="image/*" ref="file" @change="handleFileUpload($event)" class="mt-4 w-40">
+								</div>
+							</div>
 						</div>
 					</div>
 				</form>
+				<!-- END FORM -->
+
 		</div>
 	</app-back>
 </template>

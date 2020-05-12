@@ -70,7 +70,7 @@
 											<button class="focus:outline-none" >Unapproved</button>
 										</div>
 									</td>
-									<td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+									<td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium" v-if="isEmployer">
 										<router-link :to="{name: 'edit_applicant', params: {id: item.id}}" class="text-gray-600 hover:text-indigo-900 focus:outline-none focus:underline">
 											<svg class="feather feather-chevron-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
 										</router-link>
