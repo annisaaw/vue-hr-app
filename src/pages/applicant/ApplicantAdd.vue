@@ -107,12 +107,12 @@
 
 <script>
 import Background from '../../components/Background'
-import Nav from '../../components/Navigasi'
+// import Nav from '../../components/Navigasi'
 import { mapGetters, mapActions } from 'vuex'
 export default {
 	components: {
 		AppBack: Background,
-		AppNav: Nav
+		// AppNav: Nav
 	},
 	data() {
 		return {

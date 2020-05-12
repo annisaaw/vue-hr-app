@@ -1,7 +1,6 @@
 <template>
   <app-back>
     <app-nav></app-nav>
-    
     <div class="bg-black-alt font-sans leading-normal tracking-normal">
       <div class="w-full flex mt-6">
         <app-card-mini>
@@ -43,119 +42,122 @@
         </app-card-mini>
         <!-- end: today's present -->
       </div>
-<div class="flex">
-      <div class="flex-col m-4 max-w-4xl md:w-full">
-        <div class="max-w-4xl md:w-full shadow bg-gray-100 rounded m-4 border-t-4 border-yellow-500"> 
-          <!-- start: upcoming events -->
-          <div>
-            <div class=" text-center font-bold p-4 rounded-t border-b">
-              <p>
-                Upcoming Events &emsp;
-                <!-- <button class="bg-yellow-500 hover:bg-yellow-600 hover:text-white py-1 text-sm px-3 rounded m-1"> Add </button> -->
-                <router-link to="/event/add_event" class="bg-yellow-500 hover:bg-yellow-600 py-1 text-sm px-3 rounded m-1" tag="a">Add</router-link>
-              </p>
-            </div>
+      <div class="flex">
+        <div class="flex-col m-4 max-w-4xl md:w-full">
+          <div class="max-w-4xl md:w-full shadow bg-gray-100 rounded m-4 border-t-4 border-yellow-500"> 
+            <!-- start: upcoming events -->
             <div>
-              <div class="p-4">
-                <table class="table-auto w-full bg-white border text-sm" v-for="(item, idx) in allEvent" :key="idx">
-                  <tr>
-                    <td class="px-2 py-2 border-b w-10">
-                      <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
-                    </td>
-                    <td class="px-4 py-2 border-b w-40">
-                      <p>{{ item.date }}</p>
-                    </td>
-                    <td class="py-2 border-b" style="max-width: 3rem">
-                      <p>{{ item.desc }}</p>
-                    </td>
-                    <td class="px-2 py-2 border-b w-10">
-                      <router-link :to="{name: 'edit_event', params: { id: item.id}}" class="py-1 text-sm px-3 rounded m-1 hover:text-yellow-600" tag="a"><font-awesome-icon :icon="['fa', 'angle-right']" size="lg" /></router-link>
-                      
-                    </td>
-                  </tr>
-                </table>
+              <div class=" text-center font-bold p-4 rounded-t border-b">
+                <p>
+                  Upcoming Events &emsp;
+                  <!-- <button class="bg-yellow-500 hover:bg-yellow-600 hover:text-white py-1 text-sm px-3 rounded m-1"> Add </button> -->
+                  <router-link to="/event/add_event" class="bg-yellow-500 hover:bg-yellow-600 py-1 text-sm px-3 rounded m-1" tag="a">Add</router-link>
+                </p>
+              </div>
+              <div>
+                <div class="p-4">
+                  <table class="table-auto w-full bg-white border text-sm" v-for="(item, idx) in allEvent" :key="idx">
+                    <tr>
+                      <td class="px-2 py-2 border-b w-10">
+                        <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
+                      </td>
+                      <td class="px-4 py-2 border-b w-40">
+                        <p>{{ item.date }}</p>
+                      </td>
+                      <td class="py-2 border-b" style="max-width: 3rem">
+                        <p>{{ item.desc }}</p>
+                      </td>
+                      <td class="px-2 py-2 border-b w-10">
+                        <router-link :to="{name: 'edit_event', params: { id: item.id}}" class="py-1 text-sm px-3 rounded m-1 hover:text-yellow-600" tag="a"><font-awesome-icon :icon="['fa', 'angle-right']" size="lg" /></router-link>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
           <!-- end: upcoming events -->
-        </div>
-    <div class="max-w-4xl md:w-full shadow bg-gray-100 rounded m-4 border-t-4 border-yellow-500">
-      <div class=" text-center font-bold p-4 rounded-t border-b">
-        <p>Attendance</p>
-      </div>
-      <!-- start: attendance button -->
-      <div class="w-full flex mt-1">
-        <div class="w-full flex justify-around bg-gray-400" v-if="getSelfAttd">
-        <button 
-          class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
-          @click.once="clockIn()" :class="!hasClockIn ? 'bg-green-500':'bg-grey-300'">Clock In</button>
-        <button 
-          class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
-          @click.once="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
-        </div>
-      </div>
-      <!-- end: attendance button -->
-      <div class="p-2">
-        <table class="table-auto w-full bg-white border text-sm">
-        <tr class="w-full text-center">
-          <td class="w-1/5">
-          <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
-          </td>
-          <td class="border-b w-2/5">
-          <p>Masuk Time</p>
-          </td>
-          <td class="border-b w-2/5" style="max-width: 3rem">
-          <p>Keluar Time</p>
-          </td>
-        </tr>
-        <tr class="w-full text-center">
-          <td class="w-1/5">
-          <font-awesome-icon :icon="['far', 'clock']" />
-          </td>
-          <td class="border-b w-2/5">{{ checkClock(hasClockIn) }}</td>
-          <td class="border-b w-2/5"> {{ checkClock(hasClockOut) }} </td>
-        </tr>
-        </table>
-        <div v-if="!getSelfAttd">
-        <p class="text-center mt-2 bg-yellow-500">Start tommorow for attendance</p>
-        </div>
-      </div>
-    </div>
-    </div>
-    
-    <div class="flex  m-4 max-w-4xl md:w-full">
-        <app-card-medium>
-          <template v-slot:titleCard>New Applicants</template>
-          <template v-slot:contentCard>
-            <div class="p-4">
-              <table class="table-auto w-full bg-white border text-sm" v-for="(item, idx) in allApplicant" :key="idx">
-                <tr>
-                  <td class="px-1 py-2 border-b">
-                    <font-awesome-icon :icon="['fas', 'user-secret']" size="lg" />
+          <!-- start: attendance button -->
+          <div class="max-w-4xl md:w-full shadow bg-gray-100 rounded m-4 border-t-4 border-yellow-500">
+            <div class=" text-center font-bold p-4 rounded-t border-b">
+              <p>Attendance</p>
+            </div>
+            <div class="w-full flex mt-1">
+              <div class="w-full flex justify-around bg-gray-400" v-if="getSelfAttd">
+              <button 
+                class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
+                @click.once="clockIn()" :class="!hasClockIn ? 'bg-green-500':'bg-grey-300'">Clock In</button>
+              <button 
+                class="rounded p-3 m-1 flex items-center justify-center bg-white opacity-75 focus:outline-none" 
+                @click.once="clockOut()" :class="!hasClockOut ? 'bg-green-500':'bg-grey-300'">Clock Out</button>
+              </div>
+            </div>
+            <!-- end: attendance button -->
+            <div class="p-2">
+              <table class="table-auto w-full bg-white border text-sm">
+                <tr class="w-full text-center">
+                  <td class="w-1/5">
+                  <font-awesome-icon :icon="['far', 'calendar-alt']" size="lg" />
                   </td>
-                  <td class="px-4 py-2 border-b" style="max-width: 3rem">
-                    <p>{{ item.name }}</p>
+                  <td class="border-b w-2/5">
+                  <p>Masuk Time</p>
                   </td>
-                  <td class="px-4 py-2 border-b" style="max-width: 3rem">
-                    <p>{{ item.position }}</p>
-                  </td>
-                  <td class="px-4 py-2 border-b" style="max-width: 3rem">
-                    <p>{{ item.status }}</p>
+                  <td class="border-b w-2/5" style="max-width: 3rem">
+                  <p>Keluar Time</p>
                   </td>
                 </tr>
+                <tr class="w-full text-center">
+                  <td class="w-1/5">
+                  <font-awesome-icon :icon="['far', 'clock']" />
+                  </td>
+                  <td class="border-b w-2/5">{{ checkClock(hasClockIn) }}</td>
+                  <td class="border-b w-2/5"> {{ checkClock(hasClockOut) }} </td>
+                </tr>
               </table>
+              <div v-if="!getSelfAttd">
+                <p class="text-center mt-2 bg-yellow-500">Start tommorow for attendance</p>
+              </div>
             </div>
-          </template>
-        </app-card-medium>
+          </div>
+          <!-- end: attendance section -->
+        </div>
+
+        <!-- start: applicant New -->
+        <div class="flex  m-4 max-w-4xl md:w-full">
+          <app-card-medium>
+            <template v-slot:titleCard>New Applicants</template>
+            <template v-slot:contentCard>
+              <div class="p-4">
+                <table class="table-auto w-full bg-white border text-sm" v-for="(item, idx) in allApplicant" :key="idx">
+                  <tr>
+                    <td class="px-1 py-2 border-b">
+                      <font-awesome-icon :icon="['fas', 'user-secret']" size="lg" />
+                    </td>
+                    <td class="px-4 py-2 border-b" style="max-width: 3rem">
+                      <p>{{ item.name }}</p>
+                    </td>
+                    <td class="px-4 py-2 border-b" style="max-width: 3rem">
+                      <p>{{ item.position }}</p>
+                    </td>
+                    <td class="px-4 py-2 border-b" style="max-width: 3rem">
+                      <p>{{ item.status }}</p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </template>
+          </app-card-medium>
+        </div>
+        <!-- end: applicant  -->
       </div>
-    </div>
     </div>
   </app-back>
   
 </template>
 
 <script>
-import Nav from '../components/Navigasi'
+// import Nav from '../components/Navigasi'
 import Background from '../components/Background'
 import MiniCard from '../components/MiniCard'
 import MediumCard from '../components/MediumCard'
@@ -164,7 +166,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'App',
   components: {
-    AppNav: Nav,
+    // AppNav: Nav,
     AppBack: Background,
     AppCardMini: MiniCard,
     AppCardMedium: MediumCard
@@ -290,7 +292,7 @@ export default {
     }
   },
   async created() {
-    await this.fetchEmployee();
+    // await this.fetchEmployee();
     await this.fetchEvent();
     await this.fetchApplicant();
     await this.fetchAttendanceTime();

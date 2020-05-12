@@ -42,14 +42,14 @@
 </template>
 
 <script>
-import Nav from '../../components/Navigasi'
+// import Nav from '../../components/Navigasi'
 import Background from '../../components/Background'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    AppNav: Nav,
+    // AppNav: Nav,
     AppBack: Background,
   },
   data: () => ({

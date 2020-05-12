@@ -50,8 +50,6 @@
 						<router-link to="/broadcast-message" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-pink-400" tag="a" active-class="text-white border-pink-400" exact><font-awesome-icon :icon="['far', 'envelope']" />&emsp;<span class="pb-1 md:pb-0 text-sm">Broadcast</span></router-link>
 					</li>
 				</ul>
-				
-				
 			</div>
 		</div>
 	</nav>
@@ -62,7 +60,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
 	data(){
 		return {
-			show: false
+			show: false,
 		}
 	},
 	methods: {
@@ -83,9 +81,9 @@ export default {
 			emp: 'employee/listEmployee'
 		}),
 		isLoggedIn(){
-			if (!this.emp) return;
 			let userId = this.$cookies.get('user_login');
-			return userId ? this.emp.find(a=>a.id == userId).name.split(" ")[0] : '';
+			return this.emp.find(a=>a.id == userId) ? this.emp.find(a=>a.id == userId).name.split(" ")[0] : '';
+			
 		},
 		isLoggedInAvatar() {
 			let userId = this.$cookies.get('user_login');
@@ -93,7 +91,7 @@ export default {
 		}
 	},
 	async created() {
-    this.fetchLeaveRequest()
+		this.fetchLeaveRequest()
 	}
 }
 </script>

@@ -119,7 +119,7 @@ Vue.config.productionTip = false
 Vue.use(VueCookies);
 
 Vue.component('downloadCsv', JsonCSV);
-
+Vue.component('app-nav', () => import('./components/Navigasi'))
 new Vue({
   router,
   store,

@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import Nav from '../../components/Navigasi'
+// import Nav from '../../components/Navigasi'
 import Background from '../../components/Background'
 import LargeCard from '../../components/LargeCard'
 import { mapGetters, mapActions } from 'vuex'
@@ -92,7 +92,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'App',
   components: {
-    AppNav: Nav,
+    // AppNav: Nav,
     AppBack: Background,
     AppCardLarge: LargeCard,
   },
@@ -110,6 +110,7 @@ export default {
       fetchStatus: 'employee/fetchStatus'
 		}),
 		filterEmployee(employee) {
+			if (!employee) return;
 			let stat = '';
 			if (this.activeIndex === 0) stat = 'Permanent'
 			if (this.activeIndex === 1) stat = 'Contract'

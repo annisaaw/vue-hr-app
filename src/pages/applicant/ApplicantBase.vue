@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import Nav from '../../components/Navigasi'
+// import Nav from '../../components/Navigasi'
 import Background from '../../components/Background'
 import LargeCard from '../../components/LargeCard'
 import { mapActions, mapGetters } from 'vuex'
@@ -94,7 +94,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'App',
   components: {
-    AppNav: Nav,
+    // AppNav: Nav,
     AppBack: Background,
     AppCardLarge: LargeCard,
   },

@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-gray-200 min-h-screen min-w-screen">
+	<div class="bg-gray-200 min-w-screen">
 		<div class="bot-bg bg-gray-900">
 			<div class="max-w-5xl mx-auto">
 				<slot></slot>

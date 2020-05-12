@@ -49,13 +49,13 @@
 </template>
 
 <script>
-import Nav from '../../components/Navigasi'
+// import Nav from '../../components/Navigasi'
 import Background from '../../components/Background'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
 	components: {
-    AppNav: Nav,
+    // AppNav: Nav,
     AppBack: Background,
 	},
 	data() {
