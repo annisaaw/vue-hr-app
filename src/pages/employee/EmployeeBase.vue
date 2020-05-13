@@ -31,19 +31,20 @@
         <app-card-large>
           <template v-slot:titleCard>
             <div class="flex justify-center">
-              <div v-for="(item, idx) in status" :key="idx" @click="activeIndex=idx" :class="{ 'border-b-2 border-yellow-500' : activeIndex === idx}">
-                <a href="#" class="text-gray-700 inline-block py-2 px-6" >{{item.status}}</a>
+              <div v-for="(item, idx) in menu" :key="idx" @click="activeIndex=idx" :class="{ 'border-b-2 border-yellow-500' : activeIndex === idx}">
+                <a href="#" class="text-gray-700 inline-block py-2 px-6" >{{item.name}}</a>
               </div>
             </div>
           </template>
           <template v-slot:contentCard>
 						<table class="min-w-full">
-							<tbody class="bg-white">
+							<tbody class="bg-white" v-if="employee">
 								<tr>
 									<td class="p-4" colspan="4">
 										<div class="flex">
 											<input type="text" class="m-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Type to search" v-model="name">
 											<button class="m-1 bg-green-400 hover:bg-green-500 text-gray-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click="search()">Search</button>
+											<!-- <span>{{employee}}</span> -->
 										</div>
 									</td>
 								</tr>
@@ -95,39 +96,15 @@ export default {
     // AppNav: Nav,
     AppBack: Background,
     AppCardLarge: LargeCard,
-  },
-  computed: {
-    ...mapGetters({
-      employee: 'employee/listEmployee',
-      status: 'employee/listEmployeeStatus'
-		}),
-		getFilterName() {
-			return this.employee.filter(a => a.name === this.name)
-		}
-  },
-  methods: {
-    ...mapActions({
-      fetchStatus: 'employee/fetchStatus'
-		}),
-		filterEmployee(employee) {
-			if (!employee) return;
-			let stat = '';
-			if (this.activeIndex === 0) stat = 'Permanent'
-			if (this.activeIndex === 1) stat = 'Contract'
-			if (this.activeIndex === 2) stat = 'Probation'
-			return this.name ? employee.filter(a => a.status === stat && a.name.toLowerCase().includes(this.name.toLowerCase())) : employee.filter(a => a.status === stat)
-		},
-		search() {
-			return this.name
-		}
-  },
-  async created() {
-		await this.fetchStatus();
-		this.isAdmin = this.$cookies.get('user_role') === 'admin'; 
-  },
-  data: () => ({
+	},
+	data: () => ({
 		activeIndex: 0,
 		name: '',
+		menu: [
+			{ name: 'Permanent' },
+			{ name: 'Contract' },
+			{ name: 'Probation' }
+		],
 		isAdmin: false,
 		json_data: [
         {
@@ -150,8 +127,32 @@ export default {
                 'landline': '(2741) 2621-244'
             }
         }
-    ]
+		],
   }),
+  computed: {
+    ...mapGetters({
+      employee: 'employee/listEmployee',
+		})
+  },
+  methods: {
+    ...mapActions({
+			fetchEmployee: 'employee/fetchEmployee'
+		}),
+		filterEmployee(employee) {
+			let stat = '';
+			if (this.activeIndex === 0) stat = 'Permanent'
+			if (this.activeIndex === 1) stat = 'Contract'
+			if (this.activeIndex === 2) stat = 'Probation'
+			return this.name ? employee.filter(a => a.status === stat && a.name.toLowerCase().includes(this.name.toLowerCase())) : employee.filter(a => a.status === stat)
+		},
+		search() {
+			return this.name ? this.name : alert("No such name");
+		}
+	},
+  created() {
+		this.fetchEmployee();
+		this.isAdmin = this.$cookies.get('user_role') === 'admin'; 
+	},
   props: [
     "icon"
   ],
