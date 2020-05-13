@@ -9,7 +9,9 @@
 				<download-csv
 					class   = "bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1"
 					:data   = "filterEmployee(employee)"
-					name    = "employee.csv">
+					:fields = "fields"
+					:labels = "labels"
+					:name    = "dataFile">
 				
 					Export to CSV
 				
@@ -18,7 +20,9 @@
 				<download-csv
 					class   = "bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1"
 					:data   = "employee"
-					name    = "employee_all.csv">
+					:fields = "fields"
+					:labels = "labels"
+					:name    = "dataFile_all">
 				
 					Export to CSV (All)
 				
@@ -107,7 +111,21 @@ export default {
 		],
 		isAdmin: false,
 		fields: ['id', 'name', 'email', 'gender', 'birthplace', 'birthdate', 'phone', 'position', 'Division', 'status', 'role'],
-		
+		dataFile: 'employee.csv',
+		dataFile_all: 'employee_all.csv',
+        labels: {
+          id: 'ID',
+          name: 'Name',
+          email: 'Email',
+          gender: 'Gender',
+          birthplace: 'Birth Place',
+          birthdate: 'Birth Date',
+          phone: 'Phone',
+          position: 'Position',
+          Division: 'Division',
+          status: 'Status',
+          role: 'Role'
+        },
 
   }),
   computed: {

@@ -9,7 +9,9 @@
 				<download-csv
 					class   = "bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1"
 					:data   = "filterByStatus(leave_list)"
-					name    = "leave.csv">
+					:fields = "fields"
+					:labels = "labels"
+					:name    = "dataFile">
 				
 					Export to CSV
 				
@@ -18,7 +20,9 @@
 				<download-csv
 					class   = "bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1"
 					:data   = "leave_list"
-					name    = "leave_all.csv">
+					:fields = "fields"
+					:labels = "labels"
+					:name    = "dataFile_all">
 				
 					Export to CSV (All)
 				
@@ -132,12 +136,25 @@ export default {
     AppCardLarge: LargeCard,
   },
   data: () => ({
-		activeIndex: 0,
+	activeIndex: 0,
     menu: [
-			{ name: 'Approve' },
-			{ name: 'Pending' },
-			{ name: 'Rejected' },
-		]
+		{ name: 'Approve' },
+		{ name: 'Pending' },
+		{ name: 'Rejected' },
+	],
+	fields: ['id', 'status', 'employee_id', 'name', 'email', 'position', 'Division', 'leave_at'],
+	dataFile: 'leave_req.csv',
+	dataFile_all: 'leave_req_all.csv',
+    labels: {
+      id: 'ID',
+      status: 'Status',
+      employee_id: 'Employee ID',
+      name: 'Name',
+      email: 'Email',
+      position: 'Position',
+      Division: 'Division',
+      leave_at: 'Leave At'
+    },
   }),
   props: [
     "icon"

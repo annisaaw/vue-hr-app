@@ -9,7 +9,9 @@
 				<download-csv
 					class   = "bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1"
 					:data   = "filterApplicant(allApplicant)"
-					name    = "applicant.csv">
+					:fields = "fields"
+					:labels = "labels"
+					:name    = "dataFile">
 				
 					Export to CSV
 				
@@ -18,7 +20,9 @@
 				<download-csv
 					class   = "bg-yellow-500 hover:bg-yellow-600 text-gray-700 py-2 text-sm px-4 rounded m-1"
 					:data   = "allApplicant"
-					name    = "applicant_all.csv">
+					:fields = "fields"
+					:labels = "labels"
+					:name    = "dataFile_all">
 				
 					Export to CSV (All)
 				
@@ -107,6 +111,21 @@ export default {
 			{ name: 'Scheduled to Interview' }
 		],
 		isEmployer: false,
+		fields: ['id', 'name', 'email', 'gender', 'birthplace', 'birthdate', 'phone', 'position', 'Division', 'status'],
+		dataFile: 'applicant.csv',
+		dataFile_all: 'applicant_all.csv',
+        labels: {
+          id: 'ID',
+          name: 'Name',
+          email: 'Email',
+          gender: 'Gender',
+          birthplace: 'Birth Place',
+          birthdate: 'Birth Date',
+          phone: 'Phone',
+          position: 'Position',
+          Division: 'Division',
+          status: 'Status'
+        },
 	}),
 	methods: {
 		...mapActions({
